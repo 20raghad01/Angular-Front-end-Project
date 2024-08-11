@@ -1,0 +1,27 @@
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary p-3">
+    <div class="container-fluid">
+        <div class="leftNav">
+            <a class="navbar-brand" routerLink="/home" routerLinkActive="active">Home</a>
+            <a class="navbar-brand" routerLink="/category" routerLinkActive="active">Categories</a>
+            <a class="navbar-brand" routerLink="/books" routerLinkActive="active">Books</a>
+            <a class="navbar-brand" routerLink="/authors" routerLinkActive="active">Authors</a>
+        </div>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="middleNav w-50">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        </div>
+
+        <div class="navbar-nav align-items-center mb-lg-0 fs-5 ">
+            <i class="fa-regular fa-user me-4"></i>
+            <p class="text-center mt-3 ">{{ userName }}</p>
+            <i class="fa-solid fa-right-from-bracket ms-4"></i>
+        </div>
+    </div>
+    
+</nav>
+
