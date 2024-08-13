@@ -14,7 +14,7 @@ export class GetbooksService {
     return this.http.get(`${this.baseUrl}`)
   }
 
-  getProductById(id:number):Observable<any>{
+  getbookById(id:number):Observable<any>{
     return this.http.get(`${this.baseUrl}/${id}`)
   }
 }
