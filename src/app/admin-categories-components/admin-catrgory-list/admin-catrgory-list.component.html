@@ -1,0 +1,24 @@
+<div class="container">
+    <app-admin-catrgory-form></app-admin-catrgory-form>
+    <table class="table mt-5">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+            
+            
+          </tr>
+        </thead>
+        <tbody style="vertical-align: middle;">
+                <tr *ngFor="let cat of CategoriessList ;let index=index">
+                    <td>{{index}}</td>
+                    <td>{{cat.name}}</td>
+                    <td><i class="fa fa-edit text-warning" aria-hidden="true" ></i></td>
+                    <td><i class="fa fa-trash text-danger" aria-hidden="true"></i></td>
+                  </tr>
+        </tbody>
+      </table>
+    
+</div>

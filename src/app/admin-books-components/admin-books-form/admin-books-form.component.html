@@ -1,0 +1,46 @@
+<div class="inline-block  d-width " data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-plus text-light plus-icon" aria-hidden="true"></i></div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Book</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="addForm" (ngSubmit)="AddBook()">
+            <div class="mb-3">
+              <label for="booktitle" class="form-label">Book Title</label>
+              <input type="text"  id="booktitle" formControlName="booktitle" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label for="cat">Category</label>
+               <select id="cat" formControlName="category" class="form-select">
+               <option *ngFor="let Book of BooksList" [value]="Book.category" >{{Book.category}}</option>
+              </select> 
+            </div>
+            <div class="mb-3">
+              <label for="Authors">Author</label>
+               <select id="Authors" formControlName="author" class="form-select">
+               <option *ngFor="let Book of BooksList" [value]="Book.price">{{Book.price}}</option>
+              </select> 
+            </div>
+            <div class="mb-3">
+              <label for="bookimage" class="form-label"> Book Image</label>
+              <input type="file"  id="bookimage" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label for="description" class="form-label"> Description</label>
+              <textarea  id="description" formControlName="description" class="form-control"></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Add Book</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>

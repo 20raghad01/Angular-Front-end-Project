@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+.d-width{
+    margin-top: 2%;
+    width: max-content !important;
+    float: inline-end;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #537d90;
+}
+.plus-icon{
+    padding: 10px;
+}

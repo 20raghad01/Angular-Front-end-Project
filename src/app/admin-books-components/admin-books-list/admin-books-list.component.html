@@ -1,0 +1,30 @@
+<div class="container">
+    <app-admin-books-form></app-admin-books-form>
+    <table class="table mt-5">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Image</th>
+            <th scope="col">Name</th>
+            <th scope="col">Category ID</th>
+            <th scope="col">Author ID</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+            
+            
+          </tr>
+        </thead>
+        <tbody style="vertical-align: middle;">
+                <tr *ngFor="let BOOK of BooksList" >
+                    <td>{{BOOK.id}}</td>
+                    <td><img [src]="BOOK.images[0]" alt="book"></td>
+                    <td>{{BOOK.title}}</td>
+                    <td>{{BOOK.category}}</td>
+                    <td>{{BOOK.price}}</td>
+                    <td><i class="fa fa-edit btn text-warning " aria-hidden="true" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="EditBook(BOOK.id) "></i></td>
+                    <td><i class="fa fa-trash btn text-danger" aria-hidden="true" (click)="DeleteBook(BOOK.id)"></i></td>
+                  </tr>
+        </tbody>
+      </table>
+    
+</div>

@@ -1,0 +1,9 @@
+nav{
+    background-color: #537d90;
+}
+.nav-link{
+    color: white;
+}
+.router-link-active{
+    color: #3B3B38;
+}
