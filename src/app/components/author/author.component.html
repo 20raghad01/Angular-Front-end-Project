@@ -1,0 +1,67 @@
+
+<app-navbar></app-navbar>
+
+<section class="product mt-5">
+    <div class="container-fluid">
+        <div class="row mt-5">
+            <div class="col-4">
+                <img [src]="bookDetails.images[0]" alt="Product Image" class="w-100">
+            </div> 
+
+            <div class="col-8 mt-5">
+                <h4>{{bookDetails.title}}</h4> <!--Author Name-->
+                <h5>{{bookDetails.title}}</h5> <!--Date Of Birth-->
+                <h5>{{bookDetails.title}}</h5> <!--Life-->
+
+            </div>
+        </div>
+
+        <div class="AuthorBooks p-5 text-dark">
+            <h4 style="color: #645b4a;" class="fs-2">Author's Books:</h4>
+
+            <div class="mt-4">
+                @for (item of bookDetails.reviews; track $index) {
+                    <div class="books">
+                        <div class="booksInfo">
+                            <i class="fa-solid fa-book-open"></i> <!--Book Image-->
+                            <div class="">
+                                    <h4 style="color: #565657;">{{ item.reviewerName }}</h4><!--Book Name-->
+        
+                                    <div class="d-flex gap-3">
+                                        <p class="text-start stars" [innerHTML]="convertRatingToStars(bookDetails.rating)">
+                                            <!-- StarsRating -->
+                                        </p>
+                                        <p>{{bookDetails.rating}}</p>
+                                        <p> - {{bookDetails.rating}} ratings</p>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="ownReview">
+                            <div class="dropdown">
+                                <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Read <!--Return Backend-->
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item active" href="#">Currently read</a></li>
+                                    <li><a class="dropdown-item" href="#">Want to read</a></li>
+                                    <li><a class="dropdown-item" href="#">Read</a></li> 
+                                </ul>
+                            </div>
+
+                            <div class="stars mt-3 fs-5">
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+                
+            </div>
+
+        </div>
+    </div>
+</section>

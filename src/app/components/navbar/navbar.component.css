@@ -1,4 +1,8 @@
 
 .active{
-    color: #645b4a;
+    color: #645b4a  ;
+}
+
+.navbar-brand img{
+    width: 100px;
 }

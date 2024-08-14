@@ -19,6 +19,11 @@
 }
 
 .inputNumber{
-    background-color: none;
+    background-color: violet;
     color: #645b4a;
+}
+
+.disabled-icon {
+    color: #d1d5db; /* Gray color for disabled state */
+    cursor: not-allowed;
 }

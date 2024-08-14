@@ -6,12 +6,11 @@ import { TagModule } from 'primeng/tag';
 import { CommonModule } from '@angular/common';
 
 import { TableModule } from 'primeng/table';
-import { PaginatorModule } from 'primeng/paginator';
 
 import { DropdownModule } from 'primeng/dropdown';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { StatusService } from '../../../services/status.service';
+import { PaginatorModule } from 'primeng/paginator';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 interface City {
@@ -23,7 +22,7 @@ interface City {
     selector: 'app-status',
     standalone: true,
     imports: [TableModule, FormsModule, ButtonModule, RatingModule, TagModule, CommonModule,
-        PaginatorModule, DropdownModule
+        PaginatorModule, DropdownModule, NgxPaginationModule
     ],
     templateUrl: './status.component.html',
     styleUrl: './status.component.css'
@@ -31,7 +30,8 @@ interface City {
 
 export class StatusComponent {
     data!: Array<any> ;
-    
+    p: number = 1;
+
     // constructor(private statusService: StatusService) {
     //     statusService.showData().subscribe((response: any)=>{
     //         this.data = response.products;
@@ -124,46 +124,27 @@ export class StatusComponent {
 
     // filter read, wanttoread, reading
     filteredProducts: Array<any> = [...this.products];
-    currentFilter: string = 'All';
+    currentFilter: string = '';
+    currentFilterArray!: Array<any>;
 
     filterProducts(status: string) {
-        this.currentFilter = status;
-
         if (status === 'All') {
-        this.filteredProducts = [...this.products];
+            this.filteredProducts = [...this.products];
+
+            for (let i = 0; i < this.filteredProducts.length ; i++) {
+                // console.log(this.filteredProducts[i].items);
+                this.currentFilterArray = this.filteredProducts[i].items;
+                console.log(i , this.currentFilterArray);
+                
+            }
+            
+            this.currentFilter = this.products.map( product => product.items ).join(', ');
+            console.log(this.currentFilter);
+            
         } else {
-        this.filteredProducts = this.products.filter(product => product.items === status);
+            this.filteredProducts = this.products.filter(product => product.items === status);
+            this.currentFilter = status;
         }
     }
-
-    // // Options for the dropdown
-    // dropdownOptions = [
-    //     { label: 'Need to Read', value: 'need to read' },
-    //     { label: 'Want to Read', value: 'want to read' },
-    //     { label: 'Reading', value: 'reading' },
-    //     { label: 'Read', value: 'read' }
-    // ];
-
-    //  // Handle the dropdown value change
-    // onItemChange(product: any, event: any) {
-    //     product.items = event.value; // Update the item's status
-    //     console.log('Updated Product:', product);
-    // }
-
-    
-    // cities: City[] | undefined;
-
-    // selectedCity: City | undefined;
-
-    // ngOnInit() {
-    //     this.cities = [
-    //         { name: 'New York', code: 'NY' },
-    //         { name: 'Rome', code: 'RM' },
-    //         { name: 'London', code: 'LDN' },
-    //         { name: 'Istanbul', code: 'IST' },
-    //         { name: 'Paris', code: 'PRS' }
-    //     ];
-    // }
-
 }
 

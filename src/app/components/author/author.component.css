@@ -1,0 +1,26 @@
+
+.AuthorBooks{
+    /* width: 100%;
+    height: 50%; */
+    border: 1px solid #dfdfdf;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    
+}
+.stars{
+    color: #645b4a;
+    font-size: 18px;
+}
+
+.books{
+    border-bottom: 1px solid #d7d7d7;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.booksInfo{
+    display: flex;
+    align-items: baseline;
+    gap: 13px;
+    
+}
