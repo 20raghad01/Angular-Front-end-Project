@@ -1,0 +1,45 @@
+<app-navbar></app-navbar>
+
+<div class="container-fluid p-5">
+    <div class="row categories paginate text-center"> 
+        <div class="col-3 categorey Boxes p-5 mb-4" *ngFor="let item of categoriesArray | paginate: { itemsPerPage: 6, currentPage: p }; let i = index"
+            (click)="category(item.id)"
+        >
+            <img [src]="item.img" alt="">
+            <p>{{ item.name }}</p><!---Book Name-->
+        </div>
+        
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+    <!-- <div class="row ">
+        <div class="col-3 categorey p-5">
+            <img src="assets/imgs/logo.png" alt="">
+            <p>Sports</p>
+        </div>
+
+        <div class="col-3 categorey p-5">
+            <img src="assets/imgs/logo.png" alt="">
+            <p>Art</p>
+        </div>
+
+        <div class="col-3 categorey p-5">
+            <img src="assets/imgs/logo.png" alt="">
+            <p>Horror</p>
+        </div>
+
+        <div class="col-3 categorey p-5">
+            <img src="assets/imgs/logo.png" alt="">
+            <p>Society</p>
+        </div>
+        
+        <div class="col-3 categorey p-5">
+            <img src="assets/imgs/logo.png" alt="">
+            <p>Romance</p>
+        </div>
+
+        <div class="col-3 categorey p-5">
+            <img src="assets/imgs/logo.png" alt="">
+            <p>Fiction</p>
+        </div>
+    </div> -->
+</div>
