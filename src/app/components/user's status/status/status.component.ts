@@ -30,13 +30,20 @@ interface City {
 })
 
 export class StatusComponent {
-    data!: Array<any> ;
-    
-    // constructor(private statusService: StatusService) {
+  // products: Array<any> = [];
+
+  // constructor(private statusService: StatusService) {
     //     statusService.showData().subscribe((response: any)=>{
     //         this.data = response.products;
     //     })
     // }
+
+  // ngOnInit() {
+  //   this.allProductService.products.then((data) => {
+  //       this.products = data;
+  // });
+
+  // products.length
 
     products: Array<any> = [
         {
@@ -136,34 +143,7 @@ export class StatusComponent {
         }
     }
 
-    // // Options for the dropdown
-    // dropdownOptions = [
-    //     { label: 'Need to Read', value: 'need to read' },
-    //     { label: 'Want to Read', value: 'want to read' },
-    //     { label: 'Reading', value: 'reading' },
-    //     { label: 'Read', value: 'read' }
-    // ];
 
-    //  // Handle the dropdown value change
-    // onItemChange(product: any, event: any) {
-    //     product.items = event.value; // Update the item's status
-    //     console.log('Updated Product:', product);
-    // }
-
-    
-    // cities: City[] | undefined;
-
-    // selectedCity: City | undefined;
-
-    // ngOnInit() {
-    //     this.cities = [
-    //         { name: 'New York', code: 'NY' },
-    //         { name: 'Rome', code: 'RM' },
-    //         { name: 'London', code: 'LDN' },
-    //         { name: 'Istanbul', code: 'IST' },
-    //         { name: 'Paris', code: 'PRS' }
-    //     ];
-    // }
 
 }
 
