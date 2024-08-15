@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row mt-5 text-center paginate"> 
             <div class="col-3" *ngFor="let item of productsArray | paginate: { itemsPerPage: 8, currentPage: p }; let i = index">
-                <div class="box mb-5 text-center">
+                <div class="box mb-5 text-center Boxes p-5">
                     <img [src]="item.thumbnail" alt="Book Image" class="w-100">
                     <div class="content mt-3">
                         <a (click)="singlebook(item.id)">{{ item.title }}</a><!---Book Name-->
@@ -17,3 +17,5 @@
         </div>
     </div>
 </section>
+
+<app-footer></app-footer>

@@ -6,10 +6,29 @@
 a{
     cursor: pointer;
 }
+
+img{
+    width: 30%;
+}
+
+/* Paginate */
 .paginate .ngx-pagination {
     font-size: 23px;
-    color: #645b4a ;
+    color: #a5a4a4 ;
 }
 .paginate .ngx-pagination .current{
-    background-color: #a5a4a4;
+    background-color: #daeaff;
+    color: #5959ff;
+}
+
+/* Hover Boxes */
+.Boxes{
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    border-radius: 12px;
+}
+
+.Boxes:hover {
+    transform: scale(1.1);
+    border-color: #ccc; 
 }

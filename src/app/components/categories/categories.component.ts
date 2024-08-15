@@ -4,11 +4,12 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { GetcategoryService } from '../../services/getcategory.service';
+import { FooterComponent } from "../footer/footer.component";
 
 @Component({
   selector: 'app-categories',
   standalone: true,
-  imports: [NavbarComponent, NgxPaginationModule, CommonModule],
+  imports: [NavbarComponent, NgxPaginationModule, CommonModule, FooterComponent],
   templateUrl: './categories.component.html',
   styleUrl: './categories.component.css'
 })
