@@ -22,3 +22,20 @@
     background-color: none;
     color: #645b4a;
 }
+
+@media (max-width: 768px) {
+    .review-form .col-md-4 {
+        margin-bottom: 20px;
+    }
+    
+}
+
+@media (max-width: 576px) {
+    .product h3, .product h4, .product h5 {
+        font-size: 18px;
+    }
+
+    .reviewer h4, .review-form h3 {
+        font-size: 16px;
+    }
+}

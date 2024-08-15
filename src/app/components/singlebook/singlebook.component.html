@@ -4,11 +4,11 @@
 <section class="product mt-5">
     <div class="container-fluid">
         <div class="row mt-5">
-            <div class="col-4">
+            <div class="col-12 col-md-4">
                 <img [src]="bookDetails.images[0]" alt="Product Image" class="w-100">
             </div> 
 
-            <div class="col-8 mt-5">
+            <div class="col-12 col-md-8 mt-5 bookDetail">
                 <h3>{{bookDetails.title}}</h3> <!--Book Name-->
                 <h4>{{bookDetails.title}}</h4> <!--Book Author-->
                 <h5>{{bookDetails.title}}</h5> <!--Category Author-->
@@ -31,7 +31,7 @@
 
             <div class="row">
                 @for (item of bookDetails.reviews; track $index) {
-                <div class="col-4">
+                <div class="col-12 col-md-4">
                         <div class="reviewer">
                             <i class="fa-solid fa-user-astronaut fs-3 mt-4"></i>
                             <h4 style="color: #565657;">{{ item.reviewerName }}</h4>
@@ -51,7 +51,7 @@
                 <h3 style="color: #645b4a;" class="fs-2 fw-medium">Enter Your Review:</h3>
 
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-md-4">
                         <div class="d-block">
                             <label for="comment" class="fs-5 me-2" style="color: #565657;">Name</label>
                             <input class="me-4"
@@ -63,7 +63,7 @@
                             </div>
                         </div>
                         
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <label for="stacked " class="fs-5 me-2" style="color: #565657;">Rate</label>
                             <p-inputNumber 
                             [(ngModel)]="rate" 
@@ -75,7 +75,7 @@
                             [step]="1"/>
                         </div>
 
-                        <div class="col-4">
+                        <div class="col-md-4">
                             <span class="fs-5 me-2" style="color: #565657;">comment</span>
                             <textarea 
                                 rows="2"
