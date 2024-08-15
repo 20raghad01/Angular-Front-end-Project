@@ -1,0 +1,41 @@
+
+.stars{
+    color: #645b4a;
+    font-size: 18px;
+}
+
+.reviews{
+    width: 100%;
+    height: 50%;
+    border: 1px solid #dfdfdf;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    
+}
+
+.reviewer{
+    display: flex;
+    align-items: baseline;
+    gap: 13px;
+}
+
+.inputNumber{
+    background-color: none;
+    color: #645b4a;
+}
+
+@media (max-width: 768px) {
+    .review-form .col-md-4 {
+        margin-bottom: 20px;
+    }
+    
+}
+
+@media (max-width: 576px) {
+    .product h3, .product h4, .product h5 {
+        font-size: 18px;
+    }
+
+    .reviewer h4, .review-form h3 {
+        font-size: 16px;
+    }
+}

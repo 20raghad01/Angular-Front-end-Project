@@ -1,12 +1,23 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
-import { TableModule } from 'primeng/table';
 import { RatingModule } from 'primeng/rating';
 import { TagModule } from 'primeng/tag';
 import { CommonModule } from '@angular/common';
+
+import { TableModule } from 'primeng/table';
 import { PaginatorModule } from 'primeng/paginator';
+
 import { DropdownModule } from 'primeng/dropdown';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { StatusService } from '../../../services/status.service';
+
+
+interface City {
+    name: string;
+    code: string;
+}
 
 @Component({
     selector: 'app-status',
@@ -21,111 +32,118 @@ import { DropdownModule } from 'primeng/dropdown';
 export class StatusComponent {
   // products: Array<any> = [];
 
-  // constructor(private allProductService: AllProductsService) {}
+  // constructor(private statusService: StatusService) {
+    //     statusService.showData().subscribe((response: any)=>{
+    //         this.data = response.products;
+    //     })
+    // }
 
   // ngOnInit() {
   //   this.allProductService.products.then((data) => {
   //       this.products = data;
   // });
 
+  // products.length
+
     products: Array<any> = [
         {
-            id: '1000',
+            id: '1',
             cover: 'bamboo-watch.jpg',
             name: 'Bamboo Watch',
             author: "Mohamed Sadek",
             avgRate: 2,
             rating: 5,
-            items: ['read','want to read', 'reading']
+            items: 'Read'
         },
         {
-            id: '1001',
-            cover: 'black-watch.jpg',
-            name: 'Black Watch',
-            author: "Mohamed Sadek",
-            avgRate: 2,
-            rating: 4,
-            items: ['read','want to read', 'reading']
-        },
-        {
-            id: '1002',
+            id: '2',
             cover: 'blue-band.jpg',
             name: 'Blue Band',
             author: "Mohamed Sadek",
             avgRate: 5,
             rating: 3,
-            items: ['read','want to read', 'reading']
+            items: 'Reading'
         },
         {
-            id: '1003',
+            id: '3',
             cover: 'blue-t-shirt.jpg',
             name: 'Blue T-Shirt',
             author: "Mohamed Sadek",
             avgRate: 2,
             rating: 5,
-            items: ['read','want to read', 'reading']
+            items: 'Want to read'
         },
         {
-            id: '1004',
+            id: '4',
             cover: 'bracelet.jpg',
             name: 'Bracelet',
             author: "Mohamed Sadek",
             avgRate: 2,
             rating: 4,
-            items: ['read','want to read', 'reading']
+            items: 'Want to read'
         },
         {
-        id: '1000',
+        id: '5',
         cover: 'bamboo-watch.jpg',
         name: 'Bamboo Watch',
         author: "Mohamed Sadek",
         avgRate: 2,
         rating: 5,
-        items: ['read','want to read', 'reading']
+        items: 'Want to read'
     },
     {
-        id: '1001',
+        id: '6',
         cover: 'black-watch.jpg',
         name: 'Black Watch',
         author: "Mohamed Sadek",
         avgRate: 2,
         rating: 4,
-        items: ['read','want to read', 'reading']
+        items: 'Reading'
     },
     {
-        id: '1002',
+        id: '7',
         cover: 'blue-band.jpg',
         name: 'Blue Band',
         author: "Mohamed Sadek",
         avgRate: 5,
         rating: 3,
-        items: ['read','want to read', 'reading']
+        items: 'Read'
     },
     {
-        id: '1003',
+        id: '8',
         cover: 'blue-t-shirt.jpg',
         name: 'Blue T-Shirt',
         author: "Mohamed Sadek",
         avgRate: 2,
         rating: 5,
-        items: ['read','want to read', 'reading']
+        items: 'Read'
     },
     {
-        id: '1004',
+        id: '9',
         cover: 'bracelet.jpg',
         name: 'Bra',
         author: "Mohamed Sadek",
         avgRate: 2,
         rating: 4,
-        items: ['read','want to read', 'reading']
+        items: 'Reading'
     }
     ]
 
-    currentFilter:any;
-    filteredProducts = this.products;
-    filterProducts(name:string){
+    // filter read, wanttoread, reading
+    filteredProducts: Array<any> = [...this.products];
+    currentFilter: string = 'All';
 
+    filterProducts(status: string) {
+        this.currentFilter = status;
+
+        if (status === 'All') {
+        this.filteredProducts = [...this.products];
+        } else {
+        this.filteredProducts = this.products.filter(product => product.items === status);
+        }
     }
+
+
 
 }
 

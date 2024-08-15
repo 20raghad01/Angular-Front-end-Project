@@ -1,0 +1,19 @@
+<app-navbar></app-navbar>
+
+<section class="mt-5">
+    <div class="container">
+        <div class="row mt-5 text-center paginate"> 
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let item of productsArray | paginate: { itemsPerPage: 8, currentPage: p }; let i = index">
+                <div class="box mb-5 text-center">
+                    <img [src]="item.thumbnail" alt="Book Image" class="w-100">
+                    <div class="content mt-3">
+                        <a (click)="singlebook(item.id)">{{ item.title }}</a><!---Book Name-->
+                        <a>{{ item.title }}</a><!---Author Name-->
+                </div>
+            </div>
+            </div>
+            
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+    </div>
+</section>

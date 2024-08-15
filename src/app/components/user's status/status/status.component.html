@@ -1,57 +1,54 @@
 <div class="container-fluid position-relative mt-5">
-    <div class="row">
-        <div class="col-md-3 col-12 text-center">
-            <div class="sidebar p-3">
-                <a (click)="filterProducts('All')">All</a>
-                <a (click)="filterProducts('Read')">Read</a>
-                <a (click)="filterProducts('Reading')">Currently Reading</a>
-                <a (click)="filterProducts('Want to read')">Want To Read</a>
-            </div>
-        </div>
 
-        <div class="col-md-9 col-12">
-            <p-table [value]="filteredProducts" [tableStyle]="{'min-width': '60rem'}"
-                [paginator]="true" [rows]="4">
-                <ng-template pTemplate="caption">
-                    <div class="flex align-items-center justify-content-between fs-3">
-                        {{ currentFilter }}
-                    </div>
-                </ng-template>
-                <ng-template pTemplate="header">
-                    <tr>
-                        <th>Cover</th>
-                        <th>Name</th>
-                        <th>Author</th>
-                        <th>Avg Rate</th>
-                        <th>Rating</th>
-                        <th>Shelve</th>
-                    </tr>
-                </ng-template>
-                <ng-template pTemplate="body" let-product>
-                    <tr>
-                        <td>
-                            <img [src]="'https://primefaces.org/cdn/primeng/images/demo/product/' + product.cover" 
-                            [alt]="product.name" width="100" class="shadow-4" />
-                        </td>
-                        <td>{{ product.name }}</td>
-                        <td>{{ product.author }}</td>
-                        <td><p-rating [(ngModel)]="product.avgRate" [readonly]="true" [cancel]="false" /></td>
-                        <td><p-rating [(ngModel)]="product.rating" [readonly]="true" [cancel]="false" /></td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    {{ currentFilter }}
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Read</a></li>
-                                    <li><a class="dropdown-item" href="#">Reading</a></li>
-                                    <li><a class="dropdown-item" href="#">Want to read</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
-                </ng-template>
-            </p-table>
+<div class="row">
+    <div class="col-md-3 col-12 text-center">
+        <div class="sidebar p-3">
+            <a (click)="filterProducts('All')">All</a>
+            <a (click)="filterProducts('Read')">Read</a>
+            <a (click)="filterProducts('Reading')">Currently Reading</a>
+            <a (click)="filterProducts('Want to read')">Want To Read</a>
         </div>
+    </div>
+    <div class="col-md-9 col-12">
+        <p-table [value]="filteredProducts" [tableStyle]="{'min-width': '60rem'}"
+            [paginator]="true" [rows]="4"
+        >
+            <ng-template pTemplate="caption">
+                <div class="flex align-items-center justify-content-between fs-3">
+                    {{ currentFilter }}
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Cover</th>
+                    <th>Name</th>
+                    <th>Author</th>
+                    <th>Avg Rate</th>
+                    <th>Rating</th>
+                    <th>Shelve</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product>
+                <tr>
+                    <td><img [src]="'https://primefaces.org/cdn/primeng/images/demo/product/' + product.cover" [alt]="product.name" width="100" class="shadow-4" /></td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.author }}</td>
+                    <td><p-rating [(ngModel)]="product.avgRate" [readonly]="true" [cancel]="false" /></td>
+                    <td><p-rating [(ngModel)]="product.rating" [readonly]="true" [cancel]="false" /></td>
+                    <td>
+                    <div class="dropdown">
+                        <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ currentFilter }}
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Read</a></li>
+                            <li><a class="dropdown-item" href="#">Reading</a></li>
+                            <li><a class="dropdown-item" href="#">Want to read</a></li>
+                        </ul>
+                    </div>
+                </td>
+                </tr>
+            </ng-template>
+        </p-table>
     </div>
 </div>

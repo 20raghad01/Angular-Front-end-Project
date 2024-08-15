@@ -1,0 +1,22 @@
+
+
+.content{
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+}
+
+.content a{
+    transition: all 0.3s;
+}
+
+.content a:hover{
+    color: #645b4a;
+}
+
+@media (max-width: 738px) {
+    .content {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+}
