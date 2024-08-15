@@ -26,3 +26,28 @@
     margin-bottom: 20px;
     font-size: 20px;
 }
+
+@media (max-width: 1198px) {
+    .row .foot-col{
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    .content-bottom {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .content-bottom .col-md-4 {
+        margin-top: 15px;
+    }
+
+    .footer .row div {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        margin-top: 0;
+    }
+
+}
