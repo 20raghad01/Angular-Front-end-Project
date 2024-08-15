@@ -5,11 +5,12 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { NavbarComponent } from '../navbar/navbar.component';
+import { FooterComponent } from "../footer/footer.component";
 
 @Component({
   selector: 'app-author',
   standalone: true,
-  imports: [NavbarComponent, InputTextModule, FormsModule, InputNumberModule],
+  imports: [NavbarComponent, InputTextModule, FormsModule, InputNumberModule, FooterComponent],
   templateUrl: './author.component.html',
   styleUrl: './author.component.css'
 })

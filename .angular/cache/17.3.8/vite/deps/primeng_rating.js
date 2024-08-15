@@ -9,13 +9,7 @@ import {
   AutoFocusModule,
   BaseIcon,
   DomHandler
-} from "./chunk-UEZ2EP6K.js";
-import {
-  PrimeNGConfig,
-  PrimeTemplate,
-  SharedModule,
-  UniqueComponentId
-} from "./chunk-BAN7YC3Q.js";
+} from "./chunk-YRZQWI2Z.js";
 import {
 <<<<<<< HEAD
   NG_VALUE_ACCESSOR
@@ -30,6 +24,12 @@ import {
   NgStyle,
   NgTemplateOutlet
 } from "./chunk-SJQNNIAA.js";
+import {
+  PrimeNGConfig,
+  PrimeTemplate,
+  SharedModule,
+  UniqueComponentId
+} from "./chunk-BAN7YC3Q.js";
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,

@@ -6,11 +6,12 @@ import { CommonModule } from '@angular/common';
 import { GetAuthorsService } from '../../services/get-authors.service';
 
 import { NgxPaginationModule } from 'ngx-pagination';
+import { FooterComponent } from "../footer/footer.component";
 
 @Component({
   selector: 'app-authors',
   standalone: true,
-  imports: [NavbarComponent, NgxPaginationModule , CommonModule],
+  imports: [NavbarComponent, NgxPaginationModule, CommonModule, FooterComponent],
   templateUrl: './authors.component.html',
   styleUrl: './authors.component.css'
 })

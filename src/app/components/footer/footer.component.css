@@ -1,0 +1,53 @@
+
+.help a, .content-bottom a{
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.help a:hover, .social-icons{
+    color: #645b4a  ;
+}
+
+.social-icons{
+    text-align: center;
+    display: flex;
+}
+
+.content-bottom{
+    border-top: 1px solid #dee2e6;
+    
+}
+
+.social-icons{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+@media (max-width: 1198px) {
+    .row .foot-col{
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    .content-bottom {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .content-bottom .col-md-4 {
+        margin-top: 15px;
+    }
+
+    .footer .row div {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        margin-top: 0;
+    }
+
+}

@@ -7,11 +7,12 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { GetbooksService } from '../../../services/getbooks.service';
+import { FooterComponent } from "../../footer/footer.component";
 
 @Component({
   selector: 'app-books',
   standalone: true,
-  imports: [NavbarComponent, TableModule, NgxPaginationModule, CommonModule],
+  imports: [NavbarComponent, TableModule, NgxPaginationModule, CommonModule, FooterComponent],
   templateUrl: './books.component.html',
   styleUrl: './books.component.css'
 })
