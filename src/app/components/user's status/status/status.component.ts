@@ -6,12 +6,11 @@ import { TagModule } from 'primeng/tag';
 import { CommonModule } from '@angular/common';
 
 import { TableModule } from 'primeng/table';
-import { PaginatorModule } from 'primeng/paginator';
 
 import { DropdownModule } from 'primeng/dropdown';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { StatusService } from '../../../services/status.service';
+import { PaginatorModule } from 'primeng/paginator';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 interface City {
@@ -23,13 +22,15 @@ interface City {
     selector: 'app-status',
     standalone: true,
     imports: [TableModule, FormsModule, ButtonModule, RatingModule, TagModule, CommonModule,
-        PaginatorModule, DropdownModule
+        PaginatorModule, DropdownModule, NgxPaginationModule
     ],
     templateUrl: './status.component.html',
     styleUrl: './status.component.css'
 })
 
 export class StatusComponent {
+    data!: Array<any> ;
+    p: number = 1;
   // products: Array<any> = [];
 
   // constructor(private statusService: StatusService) {
@@ -37,6 +38,12 @@ export class StatusComponent {
     //         this.data = response.products;
     //     })
     // }
+  // ngOnInit() {
+  //   this.allProductService.products.then((data) => {
+  //       this.products = data;
+  // });
+
+  // products.length
 
   // ngOnInit() {
   //   this.allProductService.products.then((data) => {
@@ -131,19 +138,26 @@ export class StatusComponent {
 
     // filter read, wanttoread, reading
     filteredProducts: Array<any> = [...this.products];
-    currentFilter: string = 'All';
+    currentFilter: string = '';
+    currentFilterArray!: Array<any>;
 
     filterProducts(status: string) {
-        this.currentFilter = status;
-
         if (status === 'All') {
-        this.filteredProducts = [...this.products];
+            this.filteredProducts = [...this.products];
+
+            for (let i = 0; i < this.filteredProducts.length ; i++) {
+                // console.log(this.filteredProducts[i].items);
+                this.currentFilterArray = this.filteredProducts[i].items;
+                console.log(i , this.currentFilterArray);
+                
+            }
+            
+            this.currentFilter = this.products.map( product => product.items ).join(', ');
+            console.log(this.currentFilter);
+            
         } else {
-        this.filteredProducts = this.products.filter(product => product.items === status);
+            this.filteredProducts = this.products.filter(product => product.items === status);
+            this.currentFilter = status;
         }
     }
-
-
-
 }
-

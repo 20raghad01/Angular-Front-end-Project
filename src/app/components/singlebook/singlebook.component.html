@@ -10,8 +10,10 @@
 
             <div class="col-12 col-md-8 mt-5 bookDetail">
                 <h3>{{bookDetails.title}}</h3> <!--Book Name-->
-                <h4>{{bookDetails.title}}</h4> <!--Book Author-->
+                <h4>{{bookDetails.title}}</h4> <!--by Book Author-->
                 <h5>{{bookDetails.title}}</h5> <!--Category Author-->
+                <h5>{{bookDetails.title}}</h5> <!--Description-->
+
 
                 <div class="rating d-flex gap-3">
                     <p class="text-start stars" [innerHTML]="convertRatingToStars(bookDetails.rating)">
@@ -21,7 +23,27 @@
                     <p> - {{bookDetails.rating}} ratings</p>
                 </div>
 
-                <p>DropDown</p>
+                <div class="ownReview">
+                    <div class="dropdown">
+                        <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Read <!--Return Backend-->
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item active" href="#">Currently read</a></li>
+                            <li><a class="dropdown-item" href="#">Want to read</a></li>
+                            <li><a class="dropdown-item" href="#">Read</a></li> 
+                        </ul>
+                    </div>
+
+                    <div class="stars mt-3 fs-5">
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+
+                    </div>
+                </div>
 
             </div>
         </div>
@@ -48,7 +70,7 @@
             </div>
 
             <div class="d-flex flex-column gap-3 mt-4" style="color: #565657;">
-                <h3 style="color: #645b4a;" class="fs-2 fw-medium">Enter Your Review:</h3>
+                <h3 style="color:#3b82f6;;" class="fs-2 fw-medium">Enter Your Review:</h3>
 
                 <div class="row">
                     <div class="col-md-4">
@@ -84,7 +106,7 @@
                                 [(ngModel)]="comment">
                             </textarea>
 
-                            <i class="fa-solid fa-share fs-3 ms-4" (click)="sendReview()"></i>
+                            <i class="fa-solid fa-share fs-3 ms-4" (click)="sendReview()" style="color: #3b82f6;"></i>
                         </div>
                 </div>
             </div>
