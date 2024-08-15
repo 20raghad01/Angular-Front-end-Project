@@ -28,8 +28,6 @@ export class StatusComponent {
   //       this.products = data;
   // });
 
-  // products.length
-
     products: Array<any> = [
         {
             id: '1000',
@@ -123,7 +121,11 @@ export class StatusComponent {
     }
     ]
 
+    currentFilter:any;
+    filteredProducts = this.products;
+    filterProducts(name:string){
 
+    }
 
 }
 
