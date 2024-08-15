@@ -13,3 +13,10 @@
 .content a:hover{
     color: #645b4a;
 }
+
+@media (max-width: 738px) {
+    .content {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+}
