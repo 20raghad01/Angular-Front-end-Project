@@ -6,3 +6,31 @@
 .navbar-brand img{
     width: 100px;
 }
+
+@media (max-width: 991px) {
+    .navbar-nav {
+        text-align: center;
+    }
+    .middleNav input{
+        margin: 15px 0 15px 50%;
+    }
+
+    .user-info i {
+        margin-bottom: 10px;
+    }
+
+    .user-info .logout{
+        margin: 10px 37px 0 0;
+    }
+}
+
+@media (max-width: 576px) {
+
+    .middleNav input {
+        font-size: 14px;
+    }
+
+    .user-info p {
+        font-size: 18pxpx;
+    }
+}
