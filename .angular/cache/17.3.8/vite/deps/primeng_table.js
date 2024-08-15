@@ -1,4 +1,5 @@
 import {
+<<<<<<< HEAD
   Paginator,
   PaginatorModule
 } from "./chunk-PX4SECTC.js";
@@ -10,6 +11,15 @@ import {
   InputText,
   InputTextModule
 } from "./chunk-R3YEGMKA.js";
+=======
+  InputNumber,
+  InputNumberModule,
+  InputText,
+  InputTextModule,
+  Paginator,
+  PaginatorModule
+} from "./chunk-GY77FY7C.js";
+>>>>>>> main
 import {
   ButtonDirective,
   ButtonModule
@@ -21,15 +31,29 @@ import {
   DropdownModule,
   Scroller,
   ScrollerModule,
+<<<<<<< HEAD
+=======
+  TimesIcon,
+>>>>>>> main
   animate,
   state,
   style,
   transition,
   trigger
+<<<<<<< HEAD
 } from "./chunk-T5EFVRWV.js";
 import {
   TimesIcon
 } from "./chunk-5KW664FV.js";
+=======
+} from "./chunk-2ZWW4IBW.js";
+import {
+  FormsModule,
+  NG_VALUE_ACCESSOR,
+  NgControlStatus,
+  NgModel
+} from "./chunk-2OAWKGDD.js";
+>>>>>>> main
 import {
   Ripple,
   RippleModule,
@@ -56,12 +80,15 @@ import {
   zindexutils
 } from "./chunk-BAN7YC3Q.js";
 import {
+<<<<<<< HEAD
   FormsModule,
   NG_VALUE_ACCESSOR,
   NgControlStatus,
   NgModel
 } from "./chunk-2OAWKGDD.js";
 import {
+=======
+>>>>>>> main
   CommonModule,
   DOCUMENT,
   NgClass,

@@ -27,3 +27,19 @@
     color: #d1d5db; /* Gray color for disabled state */
     cursor: not-allowed;
 }
+@media (max-width: 768px) {
+    .review-form .col-md-4 {
+        margin-bottom: 20px;
+    }
+    
+}
+
+@media (max-width: 576px) {
+    .product h3, .product h4, .product h5 {
+        font-size: 18px;
+    }
+
+    .reviewer h4, .review-form h3 {
+        font-size: 16px;
+    }
+}

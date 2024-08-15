@@ -31,12 +31,20 @@ interface City {
 export class StatusComponent {
     data!: Array<any> ;
     p: number = 1;
+  // products: Array<any> = [];
 
   // constructor(private statusService: StatusService) {
     //     statusService.showData().subscribe((response: any)=>{
     //         this.data = response.products;
     //     })
     // }
+  // ngOnInit() {
+  //   this.allProductService.products.then((data) => {
+  //       this.products = data;
+  // });
+
+  // products.length
+
   // ngOnInit() {
   //   this.allProductService.products.then((data) => {
   //       this.products = data;
@@ -153,9 +161,3 @@ export class StatusComponent {
         }
     }
 }
-
-
-
-
-}
-
