@@ -10,3 +10,8 @@
 .plus-icon{
     padding: 10px;
 }
+.btn{
+    cursor: pointer;
+    font-size: 20px;
+    
+}

@@ -3,11 +3,12 @@ import { AdminBooksFormComponent } from '../admin-books-form/admin-books-form.co
 import { BooksServiceService } from '../../services/books-service.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { AdminBooksEditFormComponent } from '../admin-books-edit-form/admin-books-edit-form.component';
 
 @Component({
   selector: 'app-admin-books-list',
   standalone: true,
-  imports: [AdminBooksFormComponent,CommonModule],
+  imports: [AdminBooksFormComponent,CommonModule,AdminBooksEditFormComponent],
   templateUrl: './admin-books-list.component.html',
   styleUrl: './admin-books-list.component.css'
 })
@@ -27,17 +28,25 @@ export class AdminBooksListComponent {
     })
   }
   DeleteBook(bookid:number){
-    this.books.deletebook(bookid).subscribe(
-      (response) => {
+    this.books.deletebook(bookid).subscribe((response) => {
         console.log('Book deleted:', response);
-        
       }
       
     );
+    this.GetBooks();
   }
   EditBook(Bid:number){
-    this.router.navigate(['/edit',Bid])
+    this.router.navigate(['/AdminBooksEdit',Bid])
 
   } 
 
+}
+export interface BooksOBJ{
+  id:number
+  title:string;
+  category:string;
+  price:number;
+  images:string;
+  
+  
 }

@@ -12,31 +12,32 @@ import { CommonModule } from '@angular/common';
   styleUrl: './admin-catrgory-list.component.css'
 })
 export class AdminCatrgoryListComponent {
-  CategoriessList:Array<any>=[];
+  CategoriessList!:any;
 
-  constructor(private books:CategoriesServiceService,private router:Router){
+  constructor(private categories:CategoriesServiceService,private router:Router){
     
   }
   ngOnInit(){
     this.GetCategoriess();
   }
   GetCategoriess(){
-    this.books.getCategories().subscribe((response:any)=>{
-      this.CategoriessList=response.products
-      console.log(response);
+    this.categories.getCategories().subscribe((response:any)=>{
+      this.CategoriessList=response
+      
     })
   }
-  DeleteCategory(bookid:number){
-    this.books.deleteCategory(bookid).subscribe(
+  DeleteCategory(categoryid:number){
+    this.categories.deleteCategory(categoryid).subscribe(
       (response) => {
         console.log('Category deleted:', response);
         
       }
       
     );
+    this.GetCategoriess();
   }
   EditCategory(Bid:number){
-    this.router.navigate(['/edit',Bid])
+    this.router.navigate(['/AdminCategoryEdit',Bid])
 
   } 
 

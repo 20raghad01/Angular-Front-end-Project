@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CategoriesServiceService } from '../../services/categories-service.service';
 
 @Component({
   selector: 'app-admin-catrgory-form',
@@ -11,7 +12,22 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 })
 export class AdminCatrgoryFormComponent {
   AddForm!:FormGroup;
+  constructor(private categories:CategoriesServiceService){
+    this.AddForm=new FormGroup({
+      cattitle: new FormControl('', Validators.required)})
+  }
+  
+  
   AddCategory(){
+    if (this.AddForm.valid) {
+      const formData = new FormData();
+      formData.append('title', this.AddForm.controls['cattitle'].value);
+      this.categories.addCategory(formData).subscribe((res)=>{
+        console.log(res)
+        
+      })
+      
+    }
 
   }
 }

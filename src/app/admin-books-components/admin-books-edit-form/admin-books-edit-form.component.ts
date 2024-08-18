@@ -1,8 +1,9 @@
-import { Component} from '@angular/core';
+import { Component, Input} from '@angular/core';
 import { BooksServiceService } from '../../services/books-service.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, ReactiveFormsModule,FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { CategoriesServiceService } from '../../services/categories-service.service';
 
 @Component({
   selector: 'app-admin-books-edit-form',
@@ -12,13 +13,15 @@ import { CommonModule } from '@angular/common';
   styleUrl: './admin-books-edit-form.component.css'
 })
 export class AdminBooksEditFormComponent {
+ 
   EditForm!:FormGroup;
   BookId!:number;
   BookDetails:any;
-  
+  CategoriessList!:any;
+  priceList!:any;
  
   
-  constructor(private routerActive:ActivatedRoute,private product:BooksServiceService){
+  constructor(private routerActive:ActivatedRoute,private serv:BooksServiceService,private router:Router){
     this.EditForm=new FormGroup({
       booktitle: new FormControl('', Validators.required),
       category: new FormControl('', Validators.required),
@@ -30,23 +33,55 @@ export class AdminBooksEditFormComponent {
     
   ngOnInit() {
     this.BookId=this.routerActive.snapshot.params['id']
-    this.product.getOneBook(this.BookId).subscribe((response:any)=>{
+    this.serv.getOneBook(this.BookId).subscribe((response:any)=>{
       this.BookDetails=response;
       this.populateForm();
       
     })
+    this.serv.getbooks().subscribe((response:any)=>{
+      this.priceList=response.products;
+      
+    })
   }
+  selectimage(event:any){
+    const file = event.target.files[0];
+    console.log(file)
+
+  }
+  
   populateForm() {
-    // Populate the form with book details
     this.EditForm.patchValue({
-      booktitle: this.BookDetails.booktitle,
+      booktitle: this.BookDetails.title,
       category: this.BookDetails.category,
-      author: this.BookDetails.author,
-      description: this.BookDetails.description
+      author: this.BookDetails.price,
+      description: this.BookDetails.description,
+      bookimage: this.BookDetails.images
     });
 
-    // Handle file input separately as it's not included in patchValue
-    // You might need to store it in a variable if you plan to use it for update
+
   }
-  EditBook(){}
+  
+  UpdateBook(){
+    var data={
+      title:this.EditForm.value.booktitle,
+      category:this.EditForm.value.category,
+      price:this.EditForm.value.author,
+      description:this.EditForm.value.description,
+      images:this.EditForm.value.bookimage
+
+    }
+    this.serv.EditBook(data,this.BookId).subscribe({
+      next:(res:any)=>{
+        console.log(res);
+        alert("Book updated")
+      },
+      error:(err:any)=>{
+        console.log(err)
+      }
+    })
+    
+    
+    this.router.navigate(['/books'])
+    
+  }
 }

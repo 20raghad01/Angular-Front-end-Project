@@ -1,0 +1,26 @@
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="w-50">
+      <h3 class="text-dark border-bottom mb-5">Edit Author</h3>
+    <form [formGroup]="EditForm" (ngSubmit)="UpdateAuthor()">
+      <div class="mb-3">
+        <label for="authorfname" class="form-label">Author First Name</label>
+        <input type="text"  id="authorfname" formControlName="authorfname"  class="form-control">
+      </div>
+      <div class="mb-3">
+        <label for="authorlname" class="form-label">Author Last Name</label>
+        <input type="text"  id="authorlname" formControlName="authorlname"  class="form-control">
+      </div>
+      <div class="mb-3">
+        <label for="authorimage" class="form-label">Author Image</label>
+        <input type="text"  id="authorimage" formControlName="authorimage"  class="form-control">
+      </div>
+      <div class="mb-3">
+        <label for="authorDoB" class="form-label">Author Date of Birth</label>
+        <input type="date"  id="authorDoB" formControlName="authorDoB"  class="form-control">
+      </div>
+      <button type="submit" class="btn text-light" >Edit Author</button>
+      
+      
+    </form>
+    </div>
+  </div>

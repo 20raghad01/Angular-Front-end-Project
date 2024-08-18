@@ -14,13 +14,13 @@
           </tr>
         </thead>
         <tbody style="vertical-align: middle;">
-                <tr >
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><i class="fa fa-edit text-warning" aria-hidden="true" ></i></td>
-                    <td><i class="fa fa-trash text-danger" aria-hidden="true"></i></td>
+                <tr *ngFor="let author of AuthorsList"  >
+                    <td>{{author.id}}</td>
+                    <td><img [src]="author.image" alt="Person"></td>
+                    <td>{{author.firstName}}</td>
+                    <td>{{author.lastName}}</td>
+                    <td><i class="fa fa-edit text-warning btn" aria-hidden="true" (click)="EditAuthor(author.id)"></i></td>
+                    <td><i class="fa fa-trash text-danger btn" aria-hidden="true" (click)="DeleteAuthor(author.id)"></i></td>
                   </tr>
         </tbody>
       </table>

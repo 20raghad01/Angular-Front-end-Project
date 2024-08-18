@@ -9,31 +9,45 @@
   
                   <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Admin LogIn</p>
   
-                  <form class="mx-1 mx-md-4" #AdminLoginForm="ngForm" (ngSubmit)="CheckAdmin(AdminLoginForm)">
+                  <form class="mx-1 mx-md-4" #AdminLoginForm="ngForm" (ngSubmit)="CheckAdmin(AdminLoginForm.value)">
 
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fa fa-envelope fa-lg me-3 fa-fw"></i>
                       <div data-mdb-input-init class="form-outline flex-fill mb-0">
                         <label class="form-label" for="AdminUserId">User Name</label>
-                        <input   required type="text" id="AdminUserId" class="form-control" ngModel name="AdminUserName" #AdminUserName="ngModel"/>
+                        <input   
+                        type="text"
+                        id="AdminUserId"
+                        name="AdminUserName"
+                        ngModel
+                        class="form-control"
+                        
+                        required/>
                         
                       </div>
                     </div>
-                    @if(AdminUserName.errors?.['required'] && AdminUserName.touched){
+                    <!-- @if(AdminUserName.errors?.['required'] && AdminUserName.touched){
                       <small class="form-text text-danger">This field is required</small>
-                    }
+                    } -->
                     
   
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fa fa-lock fa-lg me-3 fa-fw"></i>
                       <div data-mdb-input-init class="form-outline flex-fill mb-0">
                         <label class="form-label" for="PasswordID">Password</label>
-                        <input required  type="password" id="PasswordID" class="form-control" ngModel name="AdminPassword" #AdminPassword="ngModel"/>
+                        <input 
+                        type="password"
+                        id="PasswordID"
+                        name="AdminPassword"
+                        ngModel
+                        class="form-control"
+                        
+                        required/>
                       </div>
                     </div>
-                    @if(AdminPassword.invalid && AdminPassword.touched){
+                    <!-- @if(AdminPassword.invalid && AdminPassword.touched){
                       <small class="form-text text-danger">This field is required</small>
-                    }
+                    } -->
 
                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                       <button  type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-dark btn-lg">LogIn</button>

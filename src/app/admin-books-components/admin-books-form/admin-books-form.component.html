@@ -28,14 +28,15 @@
             </div>
             <div class="mb-3">
               <label for="bookimage" class="form-label"> Book Image</label>
-              <input type="file"  id="bookimage" class="form-control">
+              <input type="text"  id="bookimage" formControlName="bookimage" class="form-control">
             </div>
             <div class="mb-3">
               <label for="description" class="form-label"> Description</label>
               <textarea  id="description" formControlName="description" class="form-control"></textarea>
             </div>
             
-            <button type="submit" class="btn btn-primary">Add Book</button>
+            
+            <button type="submit" class="btn btn-primary" >Add Book</button>
           </form>
         </div>
         <div class="modal-footer">

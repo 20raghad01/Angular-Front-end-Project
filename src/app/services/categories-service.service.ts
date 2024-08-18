@@ -13,16 +13,16 @@ export class CategoriesServiceService {
   getCategories(){
    return this.http.get('https://dummyjson.com/products/categories');
   }
-  deleteCategory(bookid:number){
-   return this.http.delete(`https://dummyjson.com/products/${bookid}`)
+  deleteCategory(categoryid:number){
+   return this.http.delete(`https://dummyjson.com/products/categories/${categoryid}`)
   }
-  addCategory(object:any){
-   return this.http.post('https://dummyjson.com/products/add',object)
+  addCategory(categoryid:any){
+   return this.http.post('https://dummyjson.com/products/categories/add',categoryid)
   }
-  getOneCategory(bookid:number){
-   return this.http.get(`https://dummyjson.com/products/${bookid}`)
+  getOneCategory(categoryid:number){
+   return this.http.get(`https://dummyjson.com/products/categories/${categoryid}`)
   }
-  EditCategory(Data:any,bookid:number){
-   return this.http.put(`https://dummyjson.com/products/${bookid}`,Data)
+  EditCategory(Data:any,categoryid:number){
+   return this.http.put(`https://dummyjson.com/products/categories/${categoryid}`,Data)
   }
 }

@@ -30,24 +30,24 @@ export class AdminBooksFormComponent {
   GetBooks(){
     this.books.getbooks().subscribe((response:any)=>{
       this.BooksList=response.products
-      console.log(response);
     })
   }
   AddBook() {
+    
     if (this.addForm.valid) {
       const formData = new FormData();
       formData.append('title', this.addForm.controls['booktitle'].value);
       formData.append('category', this.addForm.controls['category'].value);
       formData.append('price', this.addForm.controls['author'].value);
       formData.append('description', this.addForm.controls['description'].value);
-
-      if (this.addForm.controls['bookimage'].value) {
-        formData.append('images', this.addForm.controls['bookimage'].value);
-      }
+      formData.append('images', this.addForm.controls['bookimage'].value);
       this.books.addbook(formData).subscribe((res)=>{
         console.log(res)
+        
       })
+      this.GetBooks();
     }
+    
   }
 
 

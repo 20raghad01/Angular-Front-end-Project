@@ -24,4 +24,5 @@ export class BooksServiceService {
    EditBook(Data:any,bookid:number){
     return this.http.put(`https://dummyjson.com/products/${bookid}`,Data)
    }
+   
 }
