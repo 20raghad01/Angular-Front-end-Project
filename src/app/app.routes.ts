@@ -16,6 +16,7 @@ export const routes: Routes = [
 
     { path: 'books', component:BooksComponent },
     { path: 'singleBook/:id', component:SinglebookComponent },
+
     { path: 'authors', component:AuthorsComponent },
     { path: 'author/:id', component:AuthorComponent },
 

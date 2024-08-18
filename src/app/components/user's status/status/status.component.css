@@ -26,3 +26,9 @@
 .active{
     background-color:#756f64;
 }
+
+@media (max-width: 945px){
+    .sidebar::after{
+        content: none;
+    }
+}

@@ -24,3 +24,18 @@
     gap: 13px;
     
 }
+
+@media (max-width: 991px ) {
+    .content{
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .books {
+        flex-direction: column;
+    }
+    
+    .stars{
+        margin-bottom: 20px;
+    }
+}

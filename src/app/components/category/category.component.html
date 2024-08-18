@@ -3,7 +3,7 @@
 <section class="mt-5">
     <div class="container">
         <div class="row mt-5 text-center paginate"> 
-            <div class="col-3" *ngFor="let item of categoryArray | paginate: { itemsPerPage: 8, currentPage: p }; let i = index">
+            <div class="col-12 col-md-6 col-lg-3" *ngFor="let item of categoryArray | paginate: { itemsPerPage: 8, currentPage: p }; let i = index">
                 <div class="box mb-5 text-center Boxes">
                     <img [src]="item.img" alt="Book Image" class="w-100">
                     <div class="content mt-3">

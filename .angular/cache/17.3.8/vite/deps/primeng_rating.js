@@ -1,22 +1,13 @@
 import {
-<<<<<<< HEAD
-=======
   NG_VALUE_ACCESSOR
 } from "./chunk-2OAWKGDD.js";
 import {
->>>>>>> main
   AutoFocus,
   AutoFocusModule,
   BaseIcon,
   DomHandler
 } from "./chunk-YRZQWI2Z.js";
 import {
-<<<<<<< HEAD
-  NG_VALUE_ACCESSOR
-} from "./chunk-2OAWKGDD.js";
-import {
-=======
->>>>>>> main
   CommonModule,
   NgClass,
   NgForOf,
