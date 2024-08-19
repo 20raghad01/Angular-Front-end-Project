@@ -11,7 +11,7 @@
   
                   <form class="mx-1 mx-md-4" [formGroup]="AdminForm" (ngSubmit)="CheckAdmin()">
 
-                    <div class="d-flex flex-row align-items-center mb-4">
+                    <div class="d-flex flex-row align-items-center mb-3">
                       <i class="fa fa-envelope fa-lg me-3 fa-fw blue"></i>
                       <div data-mdb-input-init class="form-outline flex-fill mb-0">
                         <label class="form-label" for="AdminUserId">User Name</label>
@@ -23,12 +23,15 @@
                         formControlName="username"/>
                         
                       </div>
-                      
                     </div>
+                    @if (AdminForm.controls['username'].errors?.['required'] && AdminForm.controls['username'].touched) {
+                      <div class="mb-4"><small id="name" class="form-text text-danger inline-block ms-4 ps-3">User name Required</small></div>
+                  }
+                    
                     
                     
   
-                    <div class="d-flex flex-row align-items-center mb-4">
+                    <div class="d-flex flex-row align-items-center mb-3">
                       <i class="fa fa-lock fa-lg me-3 fa-fw blue"></i>
                       <div data-mdb-input-init class="form-outline flex-fill mb-0">
                         <label class="form-label" for="PasswordID">Password</label>
@@ -42,13 +45,14 @@
                         />
                       </div>
                     </div>
-                    <!-- @if(AdminPassword.invalid && AdminPassword.touched){
-                      <small class="form-text text-danger">This field is required</small>
-                    } -->
-                    <!-- <span *ngIf="loginError" class="text-danger">
+                    @if (AdminForm.controls['password'].errors?.['required'] && AdminForm.controls['password'].touched) {
+                      <div class="mb-4"><small id="name" class="form-text text-danger inline-block ms-4 ps-3">Password Required</small></div>
+                  }
+                    
+                    <div *ngIf="loginError" class="text-danger inline-block mb-4  ">
                       Invalid username or password.
-                    </span>
- -->
+                    </div>
+ 
                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                       <button  type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-dark btnblue btn-lg">LogIn</button>
                     </div>

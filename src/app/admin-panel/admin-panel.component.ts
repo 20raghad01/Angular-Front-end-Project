@@ -21,24 +21,22 @@ export class AdminPanelComponent {
     })
     
   }
-  CheckAdmin(){
-    if(this.AdminForm.value){
-      this.serv.login(this.AdminForm.value).subscribe((res)=>{
-        if(res){
-          localStorage.setItem('token',res.token)
+  CheckAdmin() {
+    if (this.AdminForm.value) {
+      this.serv.login(this.AdminForm.value).subscribe({
+        next: (value) => {
+          localStorage.setItem('token', value.token);
           this.router.navigate(['/category']);
-          this.loginError=false;
+          this.loginError = false;
+        },
+        error: (err) => {
+          console.log("Cannot login");
+          this.loginError = true; 
         }
-        
-        
-      }
-      
-    )
-
+      });
     }
     
-    console.log(this.AdminForm);
-
+    
   }
   
 }
