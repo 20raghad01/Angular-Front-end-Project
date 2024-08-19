@@ -5,12 +5,15 @@ import { AdminCatrgoryListComponent } from './admin-categories-components/admin-
 import { AdminBooksEditFormComponent } from './admin-books-components/admin-books-edit-form/admin-books-edit-form.component';
 import { AdminCategoryEditFormComponent } from './admin-categories-components/admin-category-edit-form/admin-category-edit-form.component';
 import { AdminAuthorEditFormComponent } from './admin-author-components/admin-author-edit-form/admin-author-edit-form.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { authGuardGuard } from './guard/auth-guard.guard';
 
 export const routes: Routes = [
-    {path:'adminhome',component:AdminCatrgoryListComponent,title:'admin'},
-    {path:'authors',component:AdminAuthorListComponent,title:'admin'},
-    {path:'books',component:AdminBooksListComponent,title:'admin'},
-    {path:'AdminBooksEdit/:id',component:AdminBooksEditFormComponent},
-    {path:'AdminCategoryEdit/:id',component:AdminCategoryEditFormComponent},
-    {path:'AdminAuthorEdit/:id',component:AdminAuthorEditFormComponent}
+    {path:'',component:AdminPanelComponent,title:'admin'},
+    {path:'category',component:AdminCatrgoryListComponent,title:'admin',canActivate:[authGuardGuard]},
+    {path:'authors',component:AdminAuthorListComponent,title:'admin',canActivate:[authGuardGuard]},
+    {path:'books',component:AdminBooksListComponent,title:'admin',canActivate:[authGuardGuard]},
+    {path:'AdminBooksEdit/:id',component:AdminBooksEditFormComponent,canActivate:[authGuardGuard]},
+    {path:'AdminCategoryEdit/:id',component:AdminCategoryEditFormComponent,canActivate:[authGuardGuard]},
+    {path:'AdminAuthorEdit/:id',component:AdminAuthorEditFormComponent,canActivate:[authGuardGuard]}
 ];

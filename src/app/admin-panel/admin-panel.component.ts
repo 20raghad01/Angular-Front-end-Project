@@ -1,31 +1,47 @@
 import { CommonModule } from '@angular/common';
 import { Component, NgModule } from '@angular/core';
-import { FormsModule, NgForm } from '@angular/forms';
+import { FormControl, FormGroup,  ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
+import { AdminServiceService } from '../services/admin-service.service';
 
 @Component({
   selector: 'app-admin-panel',
   standalone: true,
-  imports: [FormsModule,CommonModule],
+  imports: [CommonModule,ReactiveFormsModule],
   templateUrl: './admin-panel.component.html',
   styleUrl: './admin-panel.component.css'
 })
 export class AdminPanelComponent {
-  constructor(private router:Router){}
-  user:string='mina'
-  password:string='min123'
-  CheckAdmin(formValue: { AdminUserName: string; AdminPassword: string }) {
-    console.log('Form Submitted!', formValue);
+  loginError: boolean = false;
+  AdminForm!:FormGroup;
+  constructor(private router:Router,private serv:AdminServiceService){
+    this.AdminForm=new FormGroup({
+      username: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required)
+    })
+    
+  }
+  CheckAdmin(){
+    if(this.AdminForm.value){
+      this.serv.login(this.AdminForm.value).subscribe((res)=>{
+        if(res){
+          localStorage.setItem('token',res.token)
+          this.router.navigate(['/category']);
+          this.loginError=false;
+        }
+        
+        
+      }
+      
+    )
 
-    if (formValue.AdminUserName==this.user && formValue.AdminPassword==this.password) {
-      console.log(typeof(formValue.AdminUserName))
-      //this.router.navigate(['/adminhome'])
-
-    } else {
-      console.error('Form is invalid');
     }
+    
+    console.log(this.AdminForm);
+
   }
-  }
+  
+}
   
 
 

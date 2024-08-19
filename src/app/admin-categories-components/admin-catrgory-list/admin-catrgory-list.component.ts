@@ -3,11 +3,13 @@ import { AdminCatrgoryFormComponent } from '../admin-catrgory-form/admin-catrgor
 import { CategoriesServiceService } from '../../services/categories-service.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { AdminHeaderComponent } from '../../admin-header/admin-header.component';
+
 
 @Component({
   selector: 'app-admin-catrgory-list',
   standalone: true,
-  imports: [AdminCatrgoryFormComponent,CommonModule],
+  imports: [AdminCatrgoryFormComponent,CommonModule,AdminHeaderComponent],
   templateUrl: './admin-catrgory-list.component.html',
   styleUrl: './admin-catrgory-list.component.css'
 })

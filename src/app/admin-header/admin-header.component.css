@@ -7,3 +7,7 @@ nav{
 .router-link-active{
     color: #3B3B38;
 }
+.fa-sign-out{
+    font-size: 1.5rem;
+    cursor: pointer;
+}

@@ -15,3 +15,12 @@
     font-size: 20px;
     
 }
+.blue{
+    color: #537d90 !important;
+    
+}
+.btnblue{
+    background-color: #537d90 !important;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
