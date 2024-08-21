@@ -12,6 +12,7 @@ import { BooksServiceService } from '../../services/books-service.service';
 })
 export class AdminBooksFormComponent {
   addForm!:FormGroup;
+  notvalid:boolean=false;
 
   BooksList:Array<any>=[];
   constructor(private books:BooksServiceService ){
@@ -35,6 +36,7 @@ export class AdminBooksFormComponent {
   AddBook() {
     
     if (this.addForm.valid) {
+      this.notvalid=false;
       const formData = new FormData();
       formData.append('title', this.addForm.controls['booktitle'].value);
       formData.append('category', this.addForm.controls['category'].value);
@@ -46,6 +48,9 @@ export class AdminBooksFormComponent {
         
       })
       this.GetBooks();
+    }
+    else{
+      this.notvalid=true;
     }
     
   }

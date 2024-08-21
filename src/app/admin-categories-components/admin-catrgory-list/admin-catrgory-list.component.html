@@ -1,25 +1,31 @@
 
-<div class="container">
-    <app-admin-catrgory-form></app-admin-catrgory-form>
-    <table class="table mt-5">
-        <thead>
-          <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Edit</th>
-            <th scope="col">Delete</th>
-            
-            
-          </tr>
-        </thead>
-        <tbody style="vertical-align: middle;">
-                <tr *ngFor="let cat of CategoriessList; let i = index ">
-                    <td>{{i+1}}</td>
-                    <td>{{cat.name}}</td>
-                    <td><i class="fa fa-edit text-warning btn" aria-hidden="true" (click)="EditCategory(i)" ></i></td>
-                    <td><i class="fa fa-trash text-danger btn" aria-hidden="true" (click)="DeleteCategory(i)"></i></td>
-                  </tr>
-        </tbody>
-      </table>
+<div class="container-fluid position-relative mt-5 ">
+  <div class="d-flex justify-content-center">
+    <div class="col-md-9 col-12">
     
+      <p-table [value]="CategoriessList" [tableStyle]="{'min-width': '60rem'}"
+          [paginator]="true" [rows]="10"
+      >
+          
+          <ng-template pTemplate="header">
+              <tr>
+                  
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
+                  <th><app-admin-catrgory-form></app-admin-catrgory-form></th>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-cat>
+              <tr class="border-bottom">
+                  <td>1</td>
+                  <td>{{cat.name}}</td>
+                  <td><i class="fa fa-edit  btn" aria-hidden="true" (click)="EditCategory(1)" ></i></td>
+                  <td><i class="fa fa-trash  btn" aria-hidden="true" (click)="DeleteCategory(1)"></i></td>
+              </tr>
+          </ng-template>
+      </p-table>
+
+  </div>
 </div>

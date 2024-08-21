@@ -19,6 +19,7 @@ export class AdminBooksEditFormComponent {
   BookDetails:any;
   CategoriessList!:any;
   priceList!:any;
+  notvalid:boolean=false;
  
   
   constructor(private routerActive:ActivatedRoute,private serv:BooksServiceService,private router:Router){
@@ -70,18 +71,26 @@ export class AdminBooksEditFormComponent {
       images:this.EditForm.value.bookimage
 
     }
-    this.serv.EditBook(data,this.BookId).subscribe({
-      next:(res:any)=>{
-        console.log(res);
-        alert("Book updated")
-      },
-      error:(err:any)=>{
-        console.log(err)
-      }
-    })
+    if(this.EditForm.valid){
+      this.notvalid=false;
+      this.serv.EditBook(data,this.BookId).subscribe({
+        next:(res:any)=>{
+          console.log(res);
+          alert("Book updated")
+        },
+        error:(err:any)=>{
+          console.log(err)
+        }
+      })
+      
+      
+      this.router.navigate(['/books'])
+
+    }
+    else{
+      this.notvalid=true;
+    }
     
-    
-    this.router.navigate(['/books'])
     
   }
 }

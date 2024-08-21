@@ -1,12 +1,12 @@
 <div class="container mt-5 d-flex justify-content-center">
     <div class="w-50">
-      <h3 class="text-dark border-bottom mb-5">Edit Category</h3>
+      <h3 class=" border-bottom mb-5 pink pb-2 fs-3">Edit Category</h3>
     <form [formGroup]="EditForm" (ngSubmit)="UpdateCategory()">
       <div class="mb-3">
-        <label for="categorytitle" class="form-label">Category</label>
+        <label for="categorytitle" class="form-label fs-5">Category</label>
         <input type="text"  id="categorytitle" formControlName="categorytitle"  class="form-control">
       </div>
-      <button type="submit" class="btn text-light" >Edit Category</button>
+      <button type="submit" class="btn text-light btnblue" >Edit Category</button>
     </form>
     </div>
   </div>

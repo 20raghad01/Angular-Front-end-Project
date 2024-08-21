@@ -4,11 +4,14 @@ import { BooksServiceService } from '../../services/books-service.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { AdminBooksEditFormComponent } from '../admin-books-edit-form/admin-books-edit-form.component';
+import { PaginatorModule } from 'primeng/paginator';
+import { TableModule } from 'primeng/table';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-admin-books-list',
   standalone: true,
-  imports: [AdminBooksFormComponent,CommonModule,AdminBooksEditFormComponent],
+  imports: [AdminBooksFormComponent,CommonModule,AdminBooksEditFormComponent,PaginatorModule, NgxPaginationModule,TableModule],
   templateUrl: './admin-books-list.component.html',
   styleUrl: './admin-books-list.component.css'
 })

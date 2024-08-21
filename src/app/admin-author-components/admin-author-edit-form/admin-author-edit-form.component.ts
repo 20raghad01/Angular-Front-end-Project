@@ -17,14 +17,15 @@ export class AdminAuthorEditFormComponent {
   AuthorDetails:any;
   CategoriessList!:any;
   priceList!:any;
+  notvalid:boolean=false;
  
   
   constructor(private routerActive:ActivatedRoute,private serv:AuthorServiceService,private router:Router){
     this.EditForm=new FormGroup({
       authorfname: new FormControl('', Validators.required),
       authorlname: new FormControl('', Validators.required),
-      authorimage: new FormControl('', Validators.required),
-      authorDoB: new FormControl('', Validators.required),
+      authorimage: new FormControl(''),
+      authornationality: new FormControl(''),
       
     })
   }
@@ -46,7 +47,7 @@ export class AdminAuthorEditFormComponent {
       authorfname: this.AuthorDetails.firstName,
       authorlname: this.AuthorDetails.lastName,
       authorimage: this.AuthorDetails.image,
-      authorDoB: this.AuthorDetails.birthDate
+      authornationality: this.AuthorDetails.phone
     });
 
 
@@ -57,22 +58,30 @@ export class AdminAuthorEditFormComponent {
       firstName:this.EditForm.value.authorfname,
       lastName:this.EditForm.value.authorlname,
       image:this.EditForm.value.authorimage,
-      birthDate:this.EditForm.value.authorDoB
+      nationality:this.EditForm.value.authornationality
 
     }
-    this.serv.EditAuthor(data,this.AuthorId).subscribe({
-      next:(res:any)=>{
-        console.log(res);
-        alert("Author updated")
-      },
-      error:(err:any)=>{
-        console.log(err)
-      }
-    })
+    if(this.EditForm.valid){
+      this.notvalid=false;
+      this.serv.EditAuthor(data,this.AuthorId).subscribe({
+        next:(res:any)=>{
+          console.log(res);
+          alert("Author updated")
+        },
+        error:(err:any)=>{
+          console.log(err)
+        }
+      })
+      
+      
+      this.router.navigate(['/authors'])
+      
+    }
+    else{
+      this.notvalid=true;
+    }
+
+    }
     
-    
-    this.router.navigate(['/authors'])
-    
-  }
 
 }

@@ -4,12 +4,14 @@ import { CategoriesServiceService } from '../../services/categories-service.serv
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AdminHeaderComponent } from '../../admin-header/admin-header.component';
-
+import { PaginatorModule } from 'primeng/paginator';
+import { TableModule } from 'primeng/table';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-admin-catrgory-list',
   standalone: true,
-  imports: [AdminCatrgoryFormComponent,CommonModule,AdminHeaderComponent],
+  imports: [TableModule,AdminCatrgoryFormComponent,CommonModule,AdminHeaderComponent,PaginatorModule, NgxPaginationModule],
   templateUrl: './admin-catrgory-list.component.html',
   styleUrl: './admin-catrgory-list.component.css'
 })

@@ -1,11 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+
 .d-width{
     margin-top: 2%;
     width: max-content !important;
     float: inline-end;
     border-radius: 5px;
     cursor: pointer;
-    background-color: #537d90;
+    background-color: #2c466b;
+}
+.d-width:hover{
+    background-color: #53aede;
+
 }
 .plus-icon{
     padding: 10px;
@@ -16,11 +22,34 @@
     
 }
 .blue{
-    color: #537d90 !important;
+    color: #2c466b !important;
     
 }
 .btnblue{
-    background-color: #537d90 !important;
+    background-color: #2c466b !important;
+    color: white !important;
 }
+.btnblue:hover{
+    background-color: #53aede !important;
+}
+
+.paginate .ngx-pagination {
+    font-size: 23px;
+    color: #a5a4a4 ;
+}
+.paginate .ngx-pagination .current{
+    background-color: #daeaff;
+    color: #5959ff;
+}
+.fa-trash{
+    color: #fb788d !important;
+}
+.fa-edit{
+    color: #f6bbab !important;
+}
+.pink{
+    color:#cd4a58 !important ; 
+ }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+

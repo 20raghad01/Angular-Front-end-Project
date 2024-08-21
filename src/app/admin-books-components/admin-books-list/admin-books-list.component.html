@@ -1,30 +1,36 @@
-<div class="container">
-    <app-admin-books-form></app-admin-books-form>
-    <table class="table mt-5">
-        <thead>
-          <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Image</th>
-            <th scope="col">Name</th>
-            <th scope="col">Category ID</th>
-            <th scope="col">Author ID</th>
-            <th scope="col">Edit</th>
-            <th scope="col">Delete</th>
-            
-            
-          </tr>
-        </thead>
-        <tbody style="vertical-align: middle;">
-                <tr *ngFor="let BOOK of BooksList" >
-                    <td >{{BOOK.id}}</td>
-                    <td><img [src]="BOOK.images[0]" alt="book"></td>
+<div class="container-fluid position-relative mt-5 ">
+  <div class="d-flex justify-content-center">
+    <div class="col-md-9 col-12">
+    
+      <p-table [value]="BooksList" [tableStyle]="{'min-width': '60rem'}"
+          [paginator]="true" [rows]="10"
+      >
+          
+          <ng-template pTemplate="header">
+              <tr>
+                  
+                <th >ID</th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Category ID</th>
+                <th>Author ID</th>
+                <th>Edit</th>
+                <th>Delete</th>
+                <th><app-admin-books-form></app-admin-books-form></th>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-BOOK>
+              <tr class="border-bottom">
+                  <td>{{BOOK.id}}</td>
+                  <td><img [src]="BOOK.images[0]" alt="book"></td>
                     <td>{{BOOK.title}}</td>
                     <td>{{BOOK.category}}</td>
                     <td>{{BOOK.price}}</td>
-                    <td><i class="fa fa-edit btn text-warning " aria-hidden="true" data-bs-toggle="modal" data-bs-target="#EditModal" (click)="EditBook(BOOK.id) "></i></td>
-                    <td><i class="fa fa-trash btn text-danger" aria-hidden="true" (click)="DeleteBook(BOOK.id)"></i></td>
-                  </tr>
-        </tbody>
-      </table>
-    
+                    <td><i class="fa fa-edit btn  " aria-hidden="true" data-bs-toggle="modal" data-bs-target="#EditModal" (click)="EditBook(BOOK.id) "></i></td>
+                    <td><i class="fa fa-trash btn " aria-hidden="true" (click)="DeleteBook(BOOK.id)"></i></td>
+              </tr>
+          </ng-template>
+      </p-table>
+
+  </div>
 </div>

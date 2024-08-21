@@ -12,6 +12,7 @@ import { CategoriesServiceService } from '../../services/categories-service.serv
 })
 export class AdminCatrgoryFormComponent {
   AddForm!:FormGroup;
+  notvalid:boolean=false;
   constructor(private categories:CategoriesServiceService){
     this.AddForm=new FormGroup({
       cattitle: new FormControl('', Validators.required)})
@@ -20,6 +21,7 @@ export class AdminCatrgoryFormComponent {
   
   AddCategory(){
     if (this.AddForm.valid) {
+      this.notvalid=false;
       const formData = new FormData();
       formData.append('title', this.AddForm.controls['cattitle'].value);
       this.categories.addCategory(formData).subscribe((res)=>{
@@ -27,6 +29,9 @@ export class AdminCatrgoryFormComponent {
         
       })
       
+    }
+    else{
+      this.notvalid=true;
     }
 
   }

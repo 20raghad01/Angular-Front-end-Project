@@ -3,11 +3,14 @@ import { AdminAuthorFormComponent } from '../admin-author-form/admin-author-form
 import { Router, RouterLink } from '@angular/router';
 import { AuthorServiceService } from '../../services/author-service.service';
 import { CommonModule } from '@angular/common';
+import { PaginatorModule } from 'primeng/paginator';
+import { TableModule } from 'primeng/table';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-admin-author-list',
   standalone: true,
-  imports: [AdminAuthorFormComponent,RouterLink,CommonModule],
+  imports: [AdminAuthorFormComponent,RouterLink,CommonModule,PaginatorModule, NgxPaginationModule,TableModule],
   templateUrl: './admin-author-list.component.html',
   styleUrl: './admin-author-list.component.css'
 })

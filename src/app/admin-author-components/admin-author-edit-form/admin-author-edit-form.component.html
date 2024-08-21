@@ -1,24 +1,33 @@
 <div class="container mt-5 d-flex justify-content-center">
     <div class="w-50">
-      <h3 class="text-dark border-bottom mb-5">Edit Author</h3>
+      <h3 class="pink border-bottom mb-5 pb-2 fs-3">Edit Author</h3>
     <form [formGroup]="EditForm" (ngSubmit)="UpdateAuthor()">
       <div class="mb-3">
-        <label for="authorfname" class="form-label">Author First Name</label>
+        <label for="authorfname" class="form-label fs-5">Author First Name</label>
         <input type="text"  id="authorfname" formControlName="authorfname"  class="form-control">
       </div>
+      @if (EditForm.controls['authorfname'].errors?.['required'] && EditForm.controls['authorfname'].touched) {
+        <div class="mb-4"><small id="name" class="form-text text-danger inline-block ms-4 ps-3">Author First Name Required</small></div>
+    }
       <div class="mb-3">
-        <label for="authorlname" class="form-label">Author Last Name</label>
+        <label for="authorlname" class="form-label fs-5">Author Last Name</label>
         <input type="text"  id="authorlname" formControlName="authorlname"  class="form-control">
       </div>
+      @if (EditForm.controls['authorlname'].errors?.['required'] && EditForm.controls['authorlname'].touched) {
+        <div class="mb-4"><small id="name" class="form-text text-danger inline-block ms-4 ps-3">Author Last Name Required</small></div>
+    }
       <div class="mb-3">
-        <label for="authorimage" class="form-label">Author Image</label>
+        <label for="authorimage" class="form-label fs-5">Author Image</label>
         <input type="text"  id="authorimage" formControlName="authorimage"  class="form-control">
       </div>
       <div class="mb-3">
-        <label for="authorDoB" class="form-label">Author Date of Birth</label>
-        <input type="date"  id="authorDoB" formControlName="authorDoB"  class="form-control">
+        <label for="authorDoB" class="form-label fs-5">Author Nationality</label>
+        <input type="text"  id="authorDoB" formControlName="authornationality"  class="form-control">
       </div>
-      <button type="submit" class="btn text-light" >Edit Author</button>
+      @if(notvalid){
+        <div class="mb-2"><span class="text-danger fw-normal">Make sure you Enter First Name and Last Name at least </span></div>
+      }
+      <button type="submit" class="btn text-light btnblue mt-3" >Edit Author</button>
       
       
     </form>

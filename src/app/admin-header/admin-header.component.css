@@ -1,13 +1,42 @@
-nav{
-    background-color: #537d90;
-}
-.nav-link{
-    color: white;
-}
+
 .router-link-active{
-    color: #3B3B38;
+    color: #53aede;
 }
-.fa-sign-out{
+.fa-sign-out-alt{
+    color: #645b4a  ;
+    font-style: italic;
     font-size: 1.5rem;
     cursor: pointer;
+}
+.fa-sign-out-alt:hover{
+    color: #53aede;
+}
+
+.active{
+    color: #645b4a  ;
+}
+
+.navbar-brand img{
+    width: 100px;
+}
+
+@media (max-width: 991px) {
+    .navbar-nav {
+        text-align: center;
+    }
+    .middleNav input{
+        margin: 15px 0 15px 50%;
+    }
+    
+
+   
+}
+
+@media (max-width: 576px) {
+
+    .middleNav input {
+        font-size: 14px;
+    }
+
+    
 }

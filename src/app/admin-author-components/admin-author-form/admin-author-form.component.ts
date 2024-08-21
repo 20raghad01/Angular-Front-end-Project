@@ -13,11 +13,13 @@ import { AuthorServiceService } from '../../services/author-service.service';
 })
 export class AdminAuthorFormComponent {
   addForm!:FormGroup;
+  notvalid:boolean=false;
   constructor(private authors:AuthorServiceService){
     this.addForm=new FormGroup({
       authorfname: new FormControl('', Validators.required),
       authorlname: new FormControl('', Validators.required),
-      authorimage: new FormControl('', Validators.required)
+      authorimage: new FormControl(''),
+      authornationality:new FormControl('')
       
     })
     
@@ -28,12 +30,16 @@ export class AdminAuthorFormComponent {
       formData.append('firstName', this.addForm.controls['authorfname'].value);
       formData.append('lastName', this.addForm.controls['authorlname'].value);
       formData.append('image', this.addForm.controls['authorimage'].value);
-      
+      formData.append('nationality', this.addForm.controls['authorimage'].value);
+      this.notvalid=false;
       this.authors.addAuthor(formData).subscribe((res)=>{
         console.log(res)
         
       })
       
+    }
+    else{
+      this.notvalid=true;
     }
     
   }

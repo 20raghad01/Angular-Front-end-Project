@@ -15,7 +15,7 @@ export class AdminCategoryEditFormComponent {
   EditForm!:FormGroup;
   CatId!:number;
   CategoryDetails:any;
-  
+  notvalid:boolean=false;
  
   
   constructor(private routerActive:ActivatedRoute,private serv:CategoriesServiceService,private router:Router){
@@ -48,18 +48,25 @@ export class AdminCategoryEditFormComponent {
     var data={
       title:this.EditForm.value.categorytitle
     }
-    this.serv.EditCategory(data,this.CatId).subscribe({
-      next:(res:any)=>{
-        console.log(res);
-        alert("Category updated")
-      },
-      error:(err:any)=>{
-        console.log(err)
-      }
-    })
+    if(this.EditForm.valid){
+      this.notvalid=false;
+      this.serv.EditCategory(data,this.CatId).subscribe({
+        next:(res:any)=>{
+          console.log(res);
+          alert("Category updated")
+        },
+        error:(err:any)=>{
+          console.log(err)
+        }
+      })
+      
+      
+      this.router.navigate(['/adminhome'])
+    }
+    else{
+      this.notvalid=true;
+    }
     
-    
-    this.router.navigate(['/adminhome'])
     
   }
 
