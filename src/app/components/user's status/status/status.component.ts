@@ -138,23 +138,12 @@ export class StatusComponent {
 
     // filter read, wanttoread, reading
     filteredProducts: Array<any> = [...this.products];
-    currentFilter: string = '';
-    currentFilterArray!: Array<any>;
+    currentFilter: string = 'All';
 
     filterProducts(status: string) {
         if (status === 'All') {
             this.filteredProducts = [...this.products];
-
-            for (let i = 0; i < this.filteredProducts.length ; i++) {
-                // console.log(this.filteredProducts[i].items);
-                this.currentFilterArray = this.filteredProducts[i].items;
-                console.log(i , this.currentFilterArray);
-                
-            }
-            
-            this.currentFilter = this.products.map( product => product.items ).join(', ');
-            console.log(this.currentFilter);
-            
+            this.currentFilter = status;            
         } else {
             this.filteredProducts = this.products.filter(product => product.items === status);
             this.currentFilter = status;
