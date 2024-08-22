@@ -1,20 +1,22 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class GetbooksService {
-  private baseUrl = 'https://dummyjson.com/products';
+  private baseUrl = "http://localhost:3000/api/books/";
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  getBooks(){
-    return this.http.get(`${this.baseUrl}`)
+  getBooks() {
+    return this.http.get(`${this.baseUrl}`);
   }
 
-  getbookById(id:number):Observable<any>{
-    return this.http.get(`${this.baseUrl}/${id}`)
+  getbookById(id: number): Observable<any> {
+    console.log();
+    
+    return this.http.get(`${this.baseUrl}/${id}`);
   }
 }

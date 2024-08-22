@@ -1,39 +1,39 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { GetbooksService } from '../../services/getbooks.service';
+import { Component } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+import { GetbooksService } from "../../services/getbooks.service";
 import { NavbarComponent } from "../navbar/navbar.component";
 
-import { InputTextModule } from 'primeng/inputtext';
-import { FormsModule } from '@angular/forms';
-import { InputNumberModule } from 'primeng/inputnumber';
+import { InputTextModule } from "primeng/inputtext";
+import { FormsModule } from "@angular/forms";
+import { InputNumberModule } from "primeng/inputnumber";
 
 @Component({
-  selector: 'app-singlebook',
+  selector: "app-singlebook",
   standalone: true,
-  imports: [NavbarComponent, InputTextModule , FormsModule, InputNumberModule],
-  templateUrl: './singlebook.component.html',
-  styleUrl: './singlebook.component.css'
+  imports: [NavbarComponent, InputTextModule, FormsModule, InputNumberModule],
+  templateUrl: "./singlebook.component.html",
+  styleUrl: "./singlebook.component.css",
 })
-
 export class SinglebookComponent {
   name!: any;
   rate!: any;
   comment!: any;
 
-  constructor(private route : ActivatedRoute, private book:GetbooksService){}
+  constructor(private route: ActivatedRoute, private book: GetbooksService) {}
 
-  bookDetails:any= {
-    reviews: []
+  bookDetails: any = {
+    // reviews: []
   };
 
   ngOnInit() {
-    const bookId = this.route.snapshot.paramMap.get('id');
-  
-    if(bookId){
-      this.book.getbookById(+bookId).subscribe(( response => {
-          this.bookDetails = response
-          console.log(this.bookDetails.reviews[0]);
-      }))
+    const bookId = this.route.snapshot.params['id']
+    console.log(bookId);
+
+    if (bookId) {
+      this.book.getbookById(bookId).subscribe((response) => {
+        this.bookDetails = response;
+        console.log(this.bookDetails);
+      });
     }
   }
 
@@ -46,7 +46,11 @@ export class SinglebookComponent {
     const halfStarIcon = '<i class="fa-solid fa-star-half-alt mb-4"></i>';
     const emptyStarIcon = '<i class="fa-regular fa-star mb-4"></i>';
 
-    return fullStarIcon.repeat(fullStars) + halfStarIcon.repeat(halfStar) + emptyStarIcon.repeat(emptyStars);
+    return (
+      fullStarIcon.repeat(fullStars) +
+      halfStarIcon.repeat(halfStar) +
+      emptyStarIcon.repeat(emptyStars)
+    );
   }
 
   // if date of review is "2024-05-23T08:56:21.618Z"
@@ -56,17 +60,17 @@ export class SinglebookComponent {
     return `${day}-${month}-${year}`;
   }
 
-  sendReview(){
+  sendReview() {
     const newReview = {
       reviewerName: this.name,
       date: new Date().toISOString(),
       comment: this.comment,
-      rating: this.rate
+      rating: this.rate,
     };
 
     this.bookDetails.reviews.unshift(newReview);
-    this.name = '';
-    this.rate = '';
-    this.comment = '';
+    this.name = "";
+    this.rate = "";
+    this.comment = "";
   }
 }

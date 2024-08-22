@@ -1,20 +1,20 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class GetcategoryService {
-  private baseUrl = 'https://dummyjson.com/products';
+  private baseUrl = "http://localhost:3000/api/categories";
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  getCategories(){
-    return this.http.get(`${this.baseUrl}`)
+  getCategories() {
+    return this.http.get(`${this.baseUrl}`);
   }
 
-  getCategoryById(id:number):Observable<any>{
-    return this.http.get(`${this.baseUrl}/${id}`)
+  getCategoryById(id: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/${id}`);
   }
 }

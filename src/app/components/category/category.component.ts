@@ -1,96 +1,46 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 import { NavbarComponent } from "../navbar/navbar.component";
-import { CommonModule } from '@angular/common';
-import { NgxPaginationModule } from 'ngx-pagination';
-import { Router } from '@angular/router';
+import { CommonModule } from "@angular/common";
+import { NgxPaginationModule } from "ngx-pagination";
+import { ActivatedRoute, Router } from "@angular/router";
 import { FooterComponent } from "../footer/footer.component";
+import { GetbooksService } from "../../services/getbooks.service";
 
 @Component({
-  selector: 'app-category',
+  selector: "app-category",
   standalone: true,
-  imports: [NavbarComponent, NgxPaginationModule, CommonModule, FooterComponent],
-  templateUrl: './category.component.html',
-  styleUrl: './category.component.css'
+  imports: [
+    NavbarComponent,
+    NgxPaginationModule,
+    CommonModule,
+    FooterComponent,
+  ],
+  templateUrl: "./category.component.html",
+  styleUrl: "./category.component.css",
 })
-
 export class CategoryComponent {
-  categoryArray: Array<any> = [
-        {
-          "id":	1,
-          "img":	"assets/imgs/book.jpg",
-          "bookName":	"Harry Potter",
-          "bookAuthor":	"J. K. Rowling",
-        },
-        {
-          "id":	2,
-          "img":	"assets/imgs/book.jpg",
-          "bookName":	"Harry Potter",
-          "bookAuthor":	"J. K. Rowling",
-        },
-        {
-          "id":	3,
-          "img":	"assets/imgs/book.jpg",
-          "bookName":	"Harry Potter",
-          "bookAuthor":	"J. K. Rowling",
-        },
-        {
-          "id":	4,
-          "img":	"assets/imgs/book.jpg",
-          "bookName":	"Harry Potter",
-          "bookAuthor":	"J. K. Rowling",
-        },
-        {
-          "id":	5,
-          "img":	"assets/imgs/book.jpg",
-          "bookName":	"Harry Potter",
-          "bookAuthor":	"J. K. Rowling",
-        },
-        {
-          "id":	6,
-          "img":	"assets/imgs/book.jpg",
-          "bookName":	"Harry Potter",
-          "bookAuthor":	"J. K. Rowling",
-        },
-        {
-          "id":	7,
-          "img":	"assets/imgs/book.jpg",
-          "bookName":	"Harry Potter",
-          "bookAuthor":	"J. K. Rowling",
-        },
-        {
-          "id":	8,
-          "img":	"assets/imgs/book.jpg",
-          "bookName":	"Harry Potter",
-          "bookAuthor":	"J. K. Rowling",
-        },
-        {
-          "id":	5,
-          "img":	"assets/imgs/.jpg",
-          "bookName":	"Harry Potter",
-          "bookAuthor":	"J. K. Rowling",
-        },
-        {
-          "id":	6,
-          "img":	"assets/imgs/book.jpg",
-          "bookName":	"Harry Potter",
-          "bookAuthor":	"J. K. Rowling",
-        },
-        {
-          "id":	7,
-          "img":	"assets/imgs/book.jpg",
-          "bookName":	"Harry ",
-          "bookAuthor":	"J. K. Rowling",
-        },
-        {
-          "id":	8,
-          "img":	"assets/imgs/book.jpg",
-          "bookName":	"Harry Potter",
-          "bookAuthor":	"J. K. ",
-        }
-  ]
+  categoryArray!: any;
   p: number = 1;
 
-  constructor(private router:Router){}
+  categoryId: number = 0;
+
+  constructor(
+    private router: Router,
+    private booksService: GetbooksService,
+    private routerActive: ActivatedRoute
+  ) {}
+
+  ngOnInit() {
+    this.books();
+    this.categoryId = this.routerActive.snapshot.params["id"];
+  }
+  
+  books() {
+    this.booksService.getBooks().subscribe((response: any) => {
+      this.categoryArray = response;
+      
+    });
+  }
 
   singlebook(productId: number){
     this.router.navigate(['/singleBook', productId])
@@ -99,4 +49,6 @@ export class CategoryComponent {
   author(Id: number){
     this.router.navigate(['/author', Id])
   }
+
+
 }

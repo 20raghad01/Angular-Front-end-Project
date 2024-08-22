@@ -23,7 +23,7 @@ export class AuthorsComponent {
 
   constructor(private router:Router, private authorsService: GetAuthorsService){
     authorsService.getauthors().subscribe((response: any) =>{
-      this.authorsArray = response.products;
+      this.authorsArray = response;
       console.log(this.authorsArray)
       
     })
