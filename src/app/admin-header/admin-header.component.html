@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary p-3">
+  <div class="container-fluid pe-5 ps-5">
+      <a class="navbar-brand" href="#">
+          <img src="assets/imgs/logo.png" alt="Logo" class="navbar-logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="navbar-nav me-5 mb-2 mb-lg-0 leftNav fs-4">
+            <a class="nav-link" routerLink="/category" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{exact:true}">Categories </a>
+            <a class="nav-link" routerLink="/books" routerLinkActive="router-link-active">Books</a>
+            <a class="nav-link" routerLink="/authors" routerLinkActive="router-link-active">Authors</a>
+          </div>
+
+          <div class="navbar-nav ms-auto align-items-center fs-5 ">
+            
+            <div *ngIf="logged" class="mr-2">
+              <span>
+                <i class="fa fa-sign-out-alt  inline-block" aria-hidden="true" (click)="logout()"></i>
+              </span>
+            </div>
+          </div>
+      </div>
+  </div>
+</nav>
+
