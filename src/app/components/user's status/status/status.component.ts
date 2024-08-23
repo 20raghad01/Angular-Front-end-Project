@@ -13,11 +13,6 @@ import { PaginatorModule } from 'primeng/paginator';
 import { NgxPaginationModule } from 'ngx-pagination';
 
 
-interface City {
-    name: string;
-    code: string;
-}
-
 @Component({
     selector: 'app-status',
     standalone: true,
