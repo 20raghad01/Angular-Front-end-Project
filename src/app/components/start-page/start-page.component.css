@@ -1,0 +1,14 @@
+.pink{
+    background-color: #dee2e6;
+    
+}
+.blue{
+    transition: transform .2s;
+    background-color: #b9e6fa;
+}
+.blue:hover{
+    transform: scale(1.05);
+}
+h1{
+    font-size: 3.5rem;
+}

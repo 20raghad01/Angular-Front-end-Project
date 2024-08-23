@@ -7,11 +7,12 @@ import { AdminBooksEditFormComponent } from '../admin-books-edit-form/admin-book
 import { PaginatorModule } from 'primeng/paginator';
 import { TableModule } from 'primeng/table';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { AdminHeaderComponent } from '../../admin-header/admin-header.component';
 
 @Component({
   selector: 'app-admin-books-list',
   standalone: true,
-  imports: [AdminBooksFormComponent,CommonModule,AdminBooksEditFormComponent,PaginatorModule, NgxPaginationModule,TableModule],
+  imports: [AdminBooksFormComponent,CommonModule,AdminBooksEditFormComponent,PaginatorModule, NgxPaginationModule,TableModule,AdminHeaderComponent],
   templateUrl: './admin-books-list.component.html',
   styleUrl: './admin-books-list.component.css'
 })

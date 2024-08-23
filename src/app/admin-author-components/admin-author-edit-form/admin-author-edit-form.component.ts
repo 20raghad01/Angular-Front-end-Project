@@ -3,11 +3,12 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthorServiceService } from '../../services/author-service.service';
 import { CommonModule } from '@angular/common';
+import { AdminHeaderComponent } from '../../admin-header/admin-header.component';
 
 @Component({
   selector: 'app-admin-author-edit-form',
   standalone: true,
-  imports: [ReactiveFormsModule,CommonModule],
+  imports: [ReactiveFormsModule,CommonModule,AdminHeaderComponent],
   templateUrl: './admin-author-edit-form.component.html',
   styleUrl: './admin-author-edit-form.component.css'
 })

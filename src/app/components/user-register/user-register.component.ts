@@ -1,0 +1,55 @@
+import { Component } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { UserServiceService } from '../../services/user-service.service';
+import { CommonModule } from '@angular/common';
+import { Router, RouterLink } from '@angular/router';
+
+@Component({
+  selector: 'app-user-register',
+  standalone: true,
+  imports: [CommonModule,ReactiveFormsModule,RouterLink],
+  templateUrl: './user-register.component.html',
+  styleUrl: './user-register.component.css'
+})
+export class UserRegisterComponent {
+  RegisterForm!:FormGroup;
+  notvalid:boolean=false;
+  constructor(private user:UserServiceService,private router:Router){
+    this.RegisterForm=new FormGroup({
+      userfname: new FormControl('', Validators.required),
+      userlname: new FormControl('', Validators.required),
+      userimage: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.required, Validators.email,
+        Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]),
+      password: new FormControl('', [Validators.required, Validators.minLength(8)]),
+        //Validators.pattern(/^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$#%]).{8,}$/)]),
+      confirmpasswrd: new FormControl('', [Validators.required, Validators.minLength(8)])
+        //Validators.pattern(/^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$#%]).{8,}$/)])
+    })
+      
+      
+    
+    
+  }
+  AddUser(){
+    if (this.RegisterForm.valid) {
+      const formData = new FormData();
+      formData.append('firstName', this.RegisterForm.controls['userfname'].value);
+      formData.append('lastName', this.RegisterForm.controls['userlname'].value);
+      formData.append('image', this.RegisterForm.controls['userimage'].value);
+      formData.append('password', this.RegisterForm.controls['password'].value);
+      formData.append('email', this.RegisterForm.controls['email'].value);
+      this.notvalid=false;
+      this.user.register(formData).subscribe((res)=>{
+        console.log(res)
+        
+      })
+      this.router.navigate(['/UserLogin']);
+    }
+    else{
+      this.notvalid=true;
+    }
+    
+  }
+
+}

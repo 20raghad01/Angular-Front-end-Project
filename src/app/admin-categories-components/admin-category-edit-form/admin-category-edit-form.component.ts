@@ -3,11 +3,12 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ActivatedRoute, Router } from '@angular/router';
 import { CategoriesServiceService } from '../../services/categories-service.service';
 import { CommonModule } from '@angular/common';
+import { AdminHeaderComponent } from '../../admin-header/admin-header.component';
 
 @Component({
   selector: 'app-admin-category-edit-form',
   standalone: true,
-  imports: [ReactiveFormsModule,CommonModule],
+  imports: [ReactiveFormsModule,CommonModule,AdminHeaderComponent],
   templateUrl: './admin-category-edit-form.component.html',
   styleUrl: './admin-category-edit-form.component.css'
 })

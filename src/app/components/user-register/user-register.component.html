@@ -1,0 +1,155 @@
+<section class="vh-100 pt-5" style="background-color: #eee;">
+    <div class="container h-100" >
+      <div class="row d-flex justify-content-center align-items-center h-100" >
+        <div class="col-lg-5 col-xl-5" >
+          <div class="card text-dark" style="border-radius: 25px;">
+            <div class="card-body p-md-5" >
+              <div class="row justify-content-center" >
+                <div class="col-md-11 col-lg-11 col-xl-11 order-2 order-lg-1 align-content-center" >
+  
+                  <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4 blue">Admin LogIn</p>
+  
+                  <form class="mx-1 mx-md-4" [formGroup]="RegisterForm" (ngSubmit)="AddUser()">
+
+                    <div class="d-flex flex-row align-items-center mb-3">
+                      <i class="fa fa-user-circle fa-lg me-3 fa-fw blue"></i>
+                      <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                        <label class="form-label" for="FirstId">First name</label>
+                        <input   
+                        type="text"
+                        id="FirstId"
+                        name="FirstName"
+                        class="form-control"
+                        formControlName="userfname"/>
+                        
+                      </div>
+                    </div>
+                    @if (RegisterForm.controls['userfname'].errors?.['required'] && RegisterForm.controls['userfname'].touched) {
+                      <div class="mb-4"><small id="name" class="form-text text-danger inline-block ms-4 ps-3">This Field is Required</small></div>
+                  }
+                    
+                  <div class="d-flex flex-row align-items-center mb-3">
+                    <i class="fa fa-user-circle fa-lg me-3 fa-fw blue"></i>
+                    <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                      <label class="form-label" for="LastId">Last name</label>
+                      <input   
+                      type="text"
+                      id="LastId"
+                      name="LastName"
+                      class="form-control"
+                      formControlName="userlname"/>
+                      
+                    </div>
+                  </div>
+                  @if (RegisterForm.controls['userlname'].errors?.['required'] && RegisterForm.controls['userlname'].touched) {
+                    <div class="mb-4"><small id="name" class="form-text text-danger inline-block ms-4 ps-3">This Field is Required</small></div>
+                }
+                <div class="d-flex flex-row align-items-center mb-3">
+                    <i class="fa fa-image fa-lg me-3 fa-fw blue"></i>
+                    <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                      <label class="form-label" for="image">Image</label>
+                      <input   
+                      type="text"
+                      id="image"
+                      name="image"
+                      class="form-control"
+                      formControlName="userimage"/>
+                      
+                    </div>
+                  </div>
+                  @if (RegisterForm.controls['userimage'].errors?.['required'] && RegisterForm.controls['userimage'].touched) {
+                    <div class="mb-4"><small id="name" class="form-text text-danger inline-block ms-4 ps-3">This Field is Required</small></div>
+                }
+                <div class="d-flex flex-row align-items-center mb-3">
+                    <i class="fa fa-envelope fa-lg me-3 fa-fw blue"></i>
+                    <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                      <label class="form-label" for="image">Email</label>
+                      <input   
+                      type="text"
+                      id="email"
+                      name="email"
+                      class="form-control"
+                      formControlName="email"/>
+                      
+                    </div>
+                  </div>
+                  
+                @if (RegisterForm.controls['email'].errors?.['required'] && RegisterForm.controls['email'].touched) {
+                    <div class="mb-4"><small id="name" class="form-text text-danger inline-block ms-4 ps-3">This Field is Required</small></div>
+                }
+                @if (RegisterForm.controls['email'].errors?.['pattern'] && !RegisterForm.controls['email'].errors?.['required']) {
+                    <div class="ml-2"><small id="emailHelp" class="form-text text-danger">Invalid email format. </small></div> 
+                 }
+                    
+  
+                    <div class="d-flex flex-row align-items-center mb-3">
+                      <i class="fa-solid fa-key fa-lg me-3 fa-fw blue"></i>
+                      <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                        <label class="form-label" for="PasswordID">Password</label>
+                        <input 
+                        type="password"
+                        id="PasswordID"
+                        name="UserPassword"
+                        class="form-control"
+                        formControlName="password"
+                        
+                        />
+                      </div>
+                    </div>
+                    @if (RegisterForm.controls['password'].errors?.['required'] && RegisterForm.controls['password'].touched) {
+                      <div class="mb-4"><small id="name" class="form-text text-danger inline-block ms-4 ps-3">This Field is Required</small></div>
+                    }
+                    <!-- @if (RegisterForm.controls['password'].errors?.['pattern'] && !RegisterForm.controls['password'].errors?.['required']) {
+                      <div class="mb-4"><small id="name" class="form-text text-danger inline-block ms-4 ps-3">password length not length than 8 chars , 
+                        contains at least one lowercase, one uppercase, at least one digit and special char </small></div>
+                    } -->
+
+                    <div class="d-flex flex-row align-items-center mb-3">
+                        <i class="fa fa-lock fa-lg me-3 fa-fw blue"></i>
+                        <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                          <label class="form-label" for="cPasswordID">Password</label>
+                          <input 
+                          type="password"
+                          id="cPasswordID"
+                          name="UsercPassword"
+                          class="form-control"
+                          formControlName="confirmpasswrd"
+                          
+                          />
+                        </div>
+                      </div>
+                      @if (RegisterForm.controls['confirmpasswrd'].errors?.['required'] && RegisterForm.controls['confirmpasswrd'].touched) {
+                        <div class="mb-4"><small id="name" class="form-text text-danger inline-block ms-4 ps-3">This Field is Required</small></div>
+                      }
+                      <!-- @if (RegisterForm.controls['confirmpasswrd'].errors?.['pattern'] && !RegisterForm.controls['confirmpasswrd'].errors?.['required']) {
+                        <div class="mb-4"><small id="name" class="form-text text-danger inline-block ms-4 ps-3">password length not length than 8 chars , 
+                          contains at least one lowercase, one uppercase, at least one digit and special char </small></div>
+                      } -->
+                      @if (RegisterForm.controls['password'].value  != RegisterForm.controls['confirmpasswrd'].value && !RegisterForm.controls['confirmpasswrd'].errors?.['required']) {
+                        <div class="mb-4"><small id="emailHelp" class="form-text text-danger inline-block ms-4 ps-3">Passwords does not match</small></div>
+                    }
+                    @if(notvalid){
+                        <div class="mb-2"><span class="text-danger fw-normal">All Fields are required </span></div>
+                      }
+ 
+                    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                      <button  type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-dark btnblue btn-lg">Register</button>
+                    </div>
+                      <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                        <a routerLink="/UserLogin" >Already have an account? Sign In</a>
+                      </div>
+                  </form>
+
+                  
+                </div>
+                <!-- <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+                </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+

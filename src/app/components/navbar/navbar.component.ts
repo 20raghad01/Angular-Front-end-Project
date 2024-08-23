@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { UserServiceService } from '../../services/user-service.service';
 
 @Component({
   selector: 'app-navbar',
@@ -11,4 +12,9 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 
 export class NavbarComponent {
   userName: string = "Ahmed"; //Get FRom api
+  constructor(private out:UserServiceService){}
+  logout(){
+    this.out.logout();
+  }
+  logged:boolean=this.out.isLoggedIn();
 }

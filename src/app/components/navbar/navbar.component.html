@@ -13,7 +13,7 @@
     
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="navbar-nav me-5 mb-2 mb-lg-0 leftNav fs-4">
-                <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+                <a class="nav-link" routerLink="/Userhome" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
                 <a class="nav-link" routerLink="/categories" routerLinkActive="active">Categories</a>
                 <a class="nav-link" routerLink="/books" routerLinkActive="active">Books</a>
                 <a class="nav-link" routerLink="/authors" routerLinkActive="active">Authors</a>
@@ -26,7 +26,7 @@
             <div class="navbar-nav ms-auto align-items-center fs-5 user-info">
                 <i class="fa-regular fa-user me-4"></i>
                 <p class="mb-0">{{ userName }}</p>
-                <i class="fa-solid fa-right-from-bracket ms-4 logout"></i>
+                <i class="fa-solid fa-right-from-bracket ms-4 logout" (click)=" logout()"></i>
             </div>
         </div>
     </div>
