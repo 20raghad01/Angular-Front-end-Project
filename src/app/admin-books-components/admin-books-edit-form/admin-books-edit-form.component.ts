@@ -4,11 +4,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, ReactiveFormsModule,FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { CategoriesServiceService } from '../../services/categories-service.service';
+import { AdminHeaderComponent } from '../../admin-header/admin-header.component';
 
 @Component({
   selector: 'app-admin-books-edit-form',
   standalone: true,
-  imports: [ReactiveFormsModule,CommonModule],
+  imports: [ReactiveFormsModule,CommonModule,AdminHeaderComponent],
   templateUrl: './admin-books-edit-form.component.html',
   styleUrl: './admin-books-edit-form.component.css'
 })

@@ -6,6 +6,9 @@
 .navbar-brand img{
     width: 100px;
 }
+.logout{
+    cursor: pointer;
+}
 
 @media (max-width: 991px) {
     .navbar-nav {

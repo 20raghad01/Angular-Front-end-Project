@@ -26,7 +26,7 @@ export class AdminPanelComponent {
       this.serv.login(this.AdminForm.value).subscribe({
         next: (value) => {
           localStorage.setItem('token', value.token);
-          this.router.navigate(['/category']);
+          this.router.navigate(['/Admincategory']);
           this.loginError = false;
         },
         error: (err) => {
