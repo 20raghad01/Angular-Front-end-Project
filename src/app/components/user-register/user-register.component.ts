@@ -21,10 +21,10 @@ export class UserRegisterComponent {
       userimage: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.required, Validators.email,
         Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]),
-      password: new FormControl('', [Validators.required, Validators.minLength(8)]),
-        //Validators.pattern(/^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$#%]).{8,}$/)]),
-      confirmpasswrd: new FormControl('', [Validators.required, Validators.minLength(8)])
-        //Validators.pattern(/^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$#%]).{8,}$/)])
+      password: new FormControl('', [Validators.required, Validators.minLength(8),
+        Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$#%]).{8,}$/)]),
+      confirmpasswrd: new FormControl('', [Validators.required, Validators.minLength(8),
+        Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$#%]).{8,}$/)])
     })
       
       

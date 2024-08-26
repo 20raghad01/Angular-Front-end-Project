@@ -22,7 +22,7 @@ export class UserServiceService {
   register(object:any){
     return this.http.post('https://dummyjson.com/users/add',object)
    }
-   getOneUsser(userid:number){
+   getOneUser(userid:number){
     return this.http.get(`https://dummyjson.com/users/${userid}`)
    }
 }

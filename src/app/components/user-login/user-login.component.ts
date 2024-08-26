@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
 export class UserLoginComponent {
   loginError: boolean = false;
   UserForm!:FormGroup;
+  UserId!:any;
   constructor(private router:Router,private serv:UserServiceService){
     this.UserForm=new FormGroup({
       username: new FormControl('', Validators.required),
@@ -26,7 +27,9 @@ export class UserLoginComponent {
       this.serv.login(this.UserForm.value).subscribe({
         next: (value) => {
           localStorage.setItem('Usertoken', value.token);
-          this.router.navigate(['/Userhome']);
+          this.UserId=value.id;
+          console.log(this.UserId);
+          this.router.navigate(['/Userhome',this.UserId]);
           this.loginError = false;
         },
         error: (err) => {

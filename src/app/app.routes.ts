@@ -25,7 +25,7 @@ export const routes: Routes = [
     { path: '', component:StartPageComponent},
     { path: 'UserLogin', component:UserLoginComponent},
     { path: 'UserRegister', component:UserRegisterComponent},
-    { path: 'Userhome', component:HomeComponent,canActivate:[userGuardGuard]},
+    { path: 'Userhome/:id', component:HomeComponent,canActivate:[userGuardGuard]},
    
     { path: 'all', component:StatusComponent ,canActivate:[userGuardGuard]},
 
