@@ -25,7 +25,7 @@ export class AdminAuthorListComponent {
   }
   GetAuthors(){
     this.authors.getAuthors().subscribe((response:any)=>{
-      this.AuthorsList=response.users
+      this.AuthorsList=response;
       console.log(this.AuthorsList);
     })
   }
@@ -36,7 +36,7 @@ export class AdminAuthorListComponent {
       }
       
     );
-    this.GetAuthors();
+    
   }
   EditAuthor(authorid:number){
     this.router.navigate(['/AdminAuthorEdit',authorid])

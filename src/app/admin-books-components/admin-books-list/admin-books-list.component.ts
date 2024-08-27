@@ -27,7 +27,7 @@ export class AdminBooksListComponent {
   }
   GetBooks(){
     this.books.getbooks().subscribe((response:any)=>{
-      this.BooksList=response.products
+      this.BooksList=response
       console.log(response);
     })
   }

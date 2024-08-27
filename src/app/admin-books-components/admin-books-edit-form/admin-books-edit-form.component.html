@@ -2,35 +2,58 @@
 <div class="container mt-5 d-flex justify-content-center">
   <div class="w-50">
     <h3 class="pink border-bottom mb-5 pink pb-2 fs-3">Edit Book</h3>
-  <form [formGroup]="EditForm" (ngSubmit)="UpdateBook()">
-    <div class="mb-3">
-      <label for="booktitle" class="form-label fs-5">Book Title</label>
-      <input type="text"  id="booktitle" formControlName="booktitle"  class="form-control">
-    </div>
-    <div class="mb-3">
-      <label for="cat" class="fs-5">Category</label>
-       <select id="cat" formControlName="category" class="form-select fw-normal">
-       <option *ngFor="let Book of priceList" [value]="priceList.category" >{{Book.category}}</option>
-      </select> 
-    </div>
-    <div class="mb-3">
-      <label for="Authors" class=" fs-5">Author</label>
-       <select id="Authors" formControlName="author" class="form-select">
-       <option *ngFor="let Book of priceList" [value]="Book.price">{{Book.price}}</option>
-      </select> 
-    </div>
-    <div class="mb-3">
-      <label for="bookimage" class="form-label fs-5"> Book Image</label>
-      <input type="text"  id="bookimage" class="form-control" formControlName="bookimage">
-    </div> 
-    <div class="mb-3">
-      <label for="description" class="form-label fs-5"> Description</label>
-      <textarea  id="description" formControlName="description" class="form-control" rows="5"></textarea>
-    </div>
-    @if(notvalid){
-      <div class="mb-2"><span class="text-danger fw-normal">All Fields are required </span></div>
-    }
-    <button type="submit" class="btn text-light btnblue" >Save Edit </button>
-  </form>
+    <form [formGroup]="EditForm" (ngSubmit)="UpdateBook()">
+      <div class="mb-3">
+        <label for="booktitle" class="form-label fs-5">Book Title</label>
+        <input
+          type="text"
+          id="booktitle"
+          formControlName="booktitle"
+          class="form-control"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="cat" class="fs-5">Category</label>
+        <select
+          id="cat"
+          formControlName="category"
+          class="form-select fw-normal"
+        >
+          <option *ngFor="let c of cat" [value]="c._id">{{ c._id }}</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="Authors" class="fs-5">Author</label>
+        <select id="Authors" formControlName="author" class="form-select">
+          <option *ngFor="let a of auth" [value]="a._id">
+            {{ a._id }}
+          </option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="bookimage" class="form-label fs-5"> Book Image</label>
+        <input
+          type="text"
+          id="bookimage"
+          class="form-control"
+          formControlName="bookimage"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label fs-5"> Description</label>
+        <textarea
+          id="description"
+          formControlName="description"
+          class="form-control"
+          rows="5"
+        ></textarea>
+      </div>
+      @if(notvalid){
+      <div class="mb-2">
+        <span class="text-danger fw-normal">All Fields are required </span>
+      </div>
+      }
+      <button type="submit" class="btn text-light btnblue">Save Edit</button>
+    </form>
   </div>
 </div>

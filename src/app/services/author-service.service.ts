@@ -1,28 +1,24 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class AuthorServiceService {
-
-  constructor(private http:HttpClient) {
-
-
+  constructor(private http: HttpClient) {}
+  getAuthors() {
+    return this.http.get("http://localhost:3000/api/authors");
   }
-  getAuthors(){
-   return this.http.get('https://dummyjson.com/users');
+  deleteAuthor(userid: number) {
+    return this.http.delete(`http://localhost:3000/api/authors/${userid}`);
   }
-  deleteAuthor(userid:number){
-    return this.http.delete(`https://dummyjson.com/users/${userid}`)
-   }
-   addAuthor(object:any){
-    return this.http.post('https://dummyjson.com/users/add',object)
-   }
-   getOneAuthor(userid:number){
-    return this.http.get(`https://dummyjson.com/users/${userid}`)
-   }
-   EditAuthor(Data:any,userid:number){
-    return this.http.put(`https://dummyjson.com/users/${userid}`,Data)
-   }
+  addAuthor(object: any) {
+    return this.http.post("http://localhost:3000/api/authors/", object);
+  }
+  getOneAuthor(userid: number) {
+    return this.http.get(`http://localhost:3000/api/authors/${userid}`);
+  }
+  EditAuthor(Data: any, userid: number) {
+    return this.http.put(`http://localhost:3000/api/authors/${userid}`, Data);
+  }
 }

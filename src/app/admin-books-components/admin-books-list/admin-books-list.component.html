@@ -22,13 +22,13 @@
           </ng-template>
           <ng-template pTemplate="body" let-BOOK>
               <tr class="border-bottom">
-                  <td>{{BOOK.id}}</td>
-                  <td><img [src]="BOOK.images[0]" alt="book"></td>
+                  <td>{{BOOK._id}}</td>
+                  <td><img [src]="BOOK.image" alt="book"></td>
                     <td>{{BOOK.title}}</td>
-                    <td>{{BOOK.category}}</td>
-                    <td>{{BOOK.price}}</td>
-                    <td><i class="fa fa-edit btn  " aria-hidden="true" data-bs-toggle="modal" data-bs-target="#EditModal" (click)="EditBook(BOOK.id) "></i></td>
-                    <td><i class="fa fa-trash btn " aria-hidden="true" (click)="DeleteBook(BOOK.id)"></i></td>
+                    <td>{{BOOK.Category}}</td>
+                    <td>{{BOOK.author.firstName}}</td>
+                    <td><i class="fa fa-edit btn  " aria-hidden="true" data-bs-toggle="modal" data-bs-target="#EditModal" (click)="EditBook(BOOK._id) "></i></td>
+                    <td><i class="fa fa-trash btn " aria-hidden="true" (click)="DeleteBook(BOOK._id)"></i></td>
               </tr>
           </ng-template>
       </p-table>
