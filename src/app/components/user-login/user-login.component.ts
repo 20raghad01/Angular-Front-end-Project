@@ -3,6 +3,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Router, RouterLink } from '@angular/router';
 import { UserServiceService } from '../../services/user-service.service';
 import { CommonModule } from '@angular/common';
+import { jwtDecode } from 'jwt-decode';
 
 @Component({
   selector: 'app-user-login',
@@ -14,7 +15,7 @@ import { CommonModule } from '@angular/common';
 export class UserLoginComponent {
   loginError: boolean = false;
   UserForm!:FormGroup;
-  UserId!:any;
+  decodedToken!:any;
   constructor(private router:Router,private serv:UserServiceService){
     this.UserForm=new FormGroup({
       username: new FormControl('', Validators.required),
@@ -26,11 +27,20 @@ export class UserLoginComponent {
     if (this.UserForm.value) {
       this.serv.login(this.UserForm.value).subscribe({
         next: (value) => {
-          localStorage.setItem('Usertoken', value.token);
-          this.UserId=value.id;
-          console.log(this.UserId);
-          this.router.navigate(['/Userhome',this.UserId]);
-          this.loginError = false;
+          this.decodedToken=jwtDecode(value.token);
+          if(this.decodedToken.role=='user'){
+            localStorage.setItem('Usertoken', value.token);
+            this.router.navigate(['/Userhome',value.token]);
+            this.loginError = false;
+          }
+          else if(this.decodedToken.role=='admin'){
+            localStorage.setItem('token', value.token);
+            this.router.navigate(['/Admincategory']);
+            this.loginError = false;
+          }
+          
+          
+          
         },
         error: (err) => {
           console.log("Cannot login");
