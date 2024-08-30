@@ -18,7 +18,7 @@ export class SinglebookComponent {
   name!: any;
   rate!: any;
   comment!: any;
-
+  isLoading: boolean = true;
   constructor(private route: ActivatedRoute, private book: GetbooksService) {}
 
   bookDetails: any = {
@@ -32,7 +32,7 @@ export class SinglebookComponent {
     if (bookId) {
       this.book.getbookById(bookId).subscribe((response) => {
         this.bookDetails = response;
-        console.log(this.bookDetails);
+        this.isLoading = false;
       });
     }
   }

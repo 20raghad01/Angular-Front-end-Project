@@ -18,6 +18,7 @@ import { AdminHeaderComponent } from '../../admin-header/admin-header.component'
 })
 export class AdminBooksListComponent {
   BooksList:Array<any>=[];
+  isLoading: boolean = true;
 
   constructor(private books:BooksServiceService,private router:Router){
     
@@ -28,7 +29,7 @@ export class AdminBooksListComponent {
   GetBooks(){
     this.books.getbooks().subscribe((response:any)=>{
       this.BooksList=response
-      console.log(response);
+      this.isLoading = false;
     })
   }
   DeleteBook(bookid:number){

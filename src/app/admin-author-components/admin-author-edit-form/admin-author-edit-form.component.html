@@ -19,7 +19,7 @@
     }
       <div class="mb-3">
         <label for="authorimage" class="form-label fs-5">Author Image</label>
-        <input type="text"  id="authorimage" formControlName="authorimage"  class="form-control">
+        <input type="file"  id="authorimage" formControlName="authorimage"  class="form-control" (change)="selectedimage($event)">
       </div>
       <div class="mb-3">
         <label for="authorDoB" class="form-label fs-5">Author Nationality</label>

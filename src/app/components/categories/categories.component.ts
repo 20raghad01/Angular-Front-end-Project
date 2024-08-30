@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { GetcategoryService } from '../../services/getcategory.service';
 import { FooterComponent } from "../footer/footer.component";
+import { jwtDecode } from 'jwt-decode';
 
 @Component({
   selector: 'app-categories',
@@ -17,16 +18,22 @@ import { FooterComponent } from "../footer/footer.component";
 export class CategoriesComponent {
 img : string= "assets/imgs/logo.png"
   p: number = 1;
-
+  isLoading: boolean = true;
   // Dynamic
   categoriesArray!: Array<any>;
 
   constructor(private router:Router, private categoryService: GetcategoryService){
     categoryService.getCategories().subscribe((response: any) =>{
       this.categoriesArray = response;
-      console.log(this.categoriesArray)
+      this.isLoading = false;
       
     })
+    
+  }
+  tok!:any;
+  
+  ngOnInit(){
+    this.tok=localStorage.getItem('Usertoken');
     
   }
 

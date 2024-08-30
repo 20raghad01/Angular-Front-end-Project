@@ -7,6 +7,9 @@ import { InputTextModule } from "primeng/inputtext";
 import { NavbarComponent } from "../navbar/navbar.component";
 import { FooterComponent } from "../footer/footer.component";
 import { GetAuthorsService } from "../../services/get-authors.service";
+import { jwtDecode } from "jwt-decode";
+import { BooksServiceService } from "../../services/books-service.service";
+import { CommonModule } from "@angular/common";
 
 @Component({
   selector: "app-author",
@@ -17,6 +20,7 @@ import { GetAuthorsService } from "../../services/get-authors.service";
     FormsModule,
     InputNumberModule,
     FooterComponent,
+    CommonModule
   ],
   templateUrl: "./author.component.html",
   styleUrl: "./author.component.css",
@@ -25,25 +29,42 @@ export class AuthorComponent {
   name!: any;
   rate!: any;
   comment!: any;
-
+  tok!:any;
+  authorbook!:any;
+  auhtorId!:any;
+  isLoading: boolean = true;
   constructor(
     private route: ActivatedRoute,
-    private author: GetAuthorsService
+    private author: GetAuthorsService,
+    private book:GetbooksService
   ) {}
 
-  authorDetails: any = {
-    // reviews: []
-  };
+  authorDetails!: any ;
 
   ngOnInit() {
-    const auhtorId = this.route.snapshot.params["id"];
+    this.auhtorId = this.route.snapshot.params["id"];
 
-    if (auhtorId) {
-      this.author.getauthourById(auhtorId).subscribe((response) => {
+    if (this.auhtorId) {
+      this.author.getauthourById(this.auhtorId).subscribe((response) => {
         this.authorDetails = response;
-        console.log(this.authorDetails.reviews[0]);
+        
       });
     }
+    this.getbooks();
+    
+  
+    this.tok=localStorage.getItem('Usertoken');
+    console.log("author id",this.auhtorId);
+    
+    
+  
+  }
+  getbooks(){
+    this.book.getBooks().subscribe((res)=>{
+      this.authorbook=res;
+      this.isLoading= false;
+      
+    })
   }
 
   convertRatingToStars(rating: number) {

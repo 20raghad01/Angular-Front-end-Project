@@ -17,6 +17,7 @@ import { AdminHeaderComponent } from '../../admin-header/admin-header.component'
 })
 export class AdminAuthorListComponent {
   AuthorsList:Array<any>=[];
+  isLoading: boolean = true;
   constructor(private authors:AuthorServiceService,private router:Router){
     
   }
@@ -26,7 +27,7 @@ export class AdminAuthorListComponent {
   GetAuthors(){
     this.authors.getAuthors().subscribe((response:any)=>{
       this.AuthorsList=response;
-      console.log(this.AuthorsList);
+      this.isLoading = false;
     })
   }
 

@@ -1,5 +1,15 @@
+
+<div *ngIf="isLoading" class="text-center w-100 h-100 bg-body-light d-flex align-items-center justify-content-center flex-column">
+   <div>
+     <img src="assets/imgs/loading.webp" alt="Loading..." />
+   </div>
+   <div>
+     <h2>Sorry for the Inconvenience please hold on a bit ...</h2>
+   </div>
+  
+</div>
 <app-admin-header></app-admin-header>
-<div class="container-fluid position-relative mt-5 ">
+<div *ngIf="!isLoading" class="container-fluid position-relative mt-5 ">
   <div class="d-flex justify-content-center">
     <div class="col-md-9 col-12">
     
@@ -14,7 +24,7 @@
                 <th>Image</th>
                 <th>Name</th>
                 <th>Category ID</th>
-                <th>Author ID</th>
+                <th>Author </th>
                 <th>Edit</th>
                 <th>Delete</th>
                 <th><app-admin-books-form></app-admin-books-form></th>

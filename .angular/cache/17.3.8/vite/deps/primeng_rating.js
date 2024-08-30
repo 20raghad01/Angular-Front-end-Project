@@ -1,12 +1,12 @@
 import {
-  NG_VALUE_ACCESSOR
-} from "./chunk-2OAWKGDD.js";
-import {
   AutoFocus,
   AutoFocusModule,
   BaseIcon,
   DomHandler
-} from "./chunk-YRZQWI2Z.js";
+} from "./chunk-FF7FY3OJ.js";
+import {
+  NG_VALUE_ACCESSOR
+} from "./chunk-V72JZWR7.js";
 import {
   CommonModule,
   NgClass,
@@ -14,13 +14,13 @@ import {
   NgIf,
   NgStyle,
   NgTemplateOutlet
-} from "./chunk-SJQNNIAA.js";
+} from "./chunk-T5LF3D6A.js";
 import {
   PrimeNGConfig,
   PrimeTemplate,
   SharedModule,
   UniqueComponentId
-} from "./chunk-BAN7YC3Q.js";
+} from "./chunk-7E5V75FW.js";
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -70,9 +70,10 @@ import {
   ɵɵrestoreView,
   ɵɵtemplate,
   ɵɵtemplateRefExtractor
-} from "./chunk-RBFO6OI2.js";
+} from "./chunk-IMKCX7E6.js";
+import "./chunk-J4B6MK7R.js";
 
-// node_modules/primeng/fesm2022/primeng-icons-ban.mjs
+// ../../node_modules/primeng/fesm2022/primeng-icons-ban.mjs
 var BanIcon = class _BanIcon extends BaseIcon {
   pathId;
   ngOnInit() {
@@ -140,7 +141,7 @@ var BanIcon = class _BanIcon extends BaseIcon {
   }], null, null);
 })();
 
-// node_modules/primeng/fesm2022/primeng-icons-star.mjs
+// ../../node_modules/primeng/fesm2022/primeng-icons-star.mjs
 var StarIcon = class _StarIcon extends BaseIcon {
   pathId;
   ngOnInit() {
@@ -208,7 +209,7 @@ var StarIcon = class _StarIcon extends BaseIcon {
   }], null, null);
 })();
 
-// node_modules/primeng/fesm2022/primeng-icons-starfill.mjs
+// ../../node_modules/primeng/fesm2022/primeng-icons-starfill.mjs
 var StarFillIcon = class _StarFillIcon extends BaseIcon {
   pathId;
   ngOnInit() {
@@ -276,7 +277,7 @@ var StarFillIcon = class _StarFillIcon extends BaseIcon {
   }], null, null);
 })();
 
-// node_modules/primeng/fesm2022/primeng-rating.mjs
+// ../../node_modules/primeng/fesm2022/primeng-rating.mjs
 var _c0 = (a0, a1) => ({
   "p-readonly": a0,
   "p-disabled": a1

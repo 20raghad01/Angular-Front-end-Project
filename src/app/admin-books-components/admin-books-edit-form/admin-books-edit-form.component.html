@@ -19,9 +19,12 @@
           formControlName="category"
           class="form-select fw-normal"
         >
-          <option *ngFor="let c of cat" [value]="c._id">{{ c._id }}</option>
+          <option *ngFor="let c of cat" [value]="c._id">
+            {{ c._id }}
+          </option>
         </select>
       </div>
+      
       <div class="mb-3">
         <label for="Authors" class="fs-5">Author</label>
         <select id="Authors" formControlName="author" class="form-select">
@@ -33,10 +36,11 @@
       <div class="mb-3">
         <label for="bookimage" class="form-label fs-5"> Book Image</label>
         <input
-          type="text"
+          type="file"
           id="bookimage"
           class="form-control"
           formControlName="bookimage"
+          (change)="selectedimage($event)"
         />
       </div>
       <div class="mb-3">

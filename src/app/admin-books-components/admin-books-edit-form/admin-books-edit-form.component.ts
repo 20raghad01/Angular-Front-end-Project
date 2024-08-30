@@ -23,12 +23,10 @@ export class AdminBooksEditFormComponent {
   EditForm!: FormGroup;
   BookId!: number;
   BookDetails: any;
-  CategoriessList!: any;
-  priceList!: any;
   notvalid: boolean = false;
   cat!: any;
   auth!: Array<any>;
-
+  imageBase64: string | ArrayBuffer | null = null;
   constructor(
     private routerActive: ActivatedRoute,
     private serv: BooksServiceService,
@@ -37,50 +35,47 @@ export class AdminBooksEditFormComponent {
     private bookauthor: AuthorServiceService
   ) {
     this.EditForm = new FormGroup({
-      booktitle: new FormControl("", Validators.required),
-      category: new FormControl("", Validators.required),
-      author: new FormControl("", Validators.required),
-      description: new FormControl("", Validators.required),
-      bookimage: new FormControl("", Validators.required),
+      booktitle: new FormControl(""),
+      category: new FormControl(""),
+      author: new FormControl(""),
+      description: new FormControl(""),
+      bookimage: new FormControl(""),
     });
   }
 
   ngOnInit() {
-    this.getcategories();
-    this.getauthor();
+    
     this.BookId = this.routerActive.snapshot.params["id"];
     this.serv.getOneBook(this.BookId).subscribe((response: any) => {
       this.BookDetails = response;
-      this.populateForm();
-    });
-    this.serv.getbooks().subscribe((response: any) => {
-      this.priceList = response.products;
+      this.getcategories();
+      this.getauthor();
+      console.log(this.BookDetails);
     });
   }
-
-  selectimage(event: any) {
-    const file = event.target.files[0];
-    console.log(file);
-  }
+  
   getcategories() {
     this.bookcategory.getCategories().subscribe((response: any) => {
       this.cat = response;
+      this.populateForm(); 
     });
   }
+  
   getauthor() {
     this.bookauthor.getAuthors().subscribe((response: any) => {
-      console.log("API Response:", response);
       this.auth = response;
+      this.populateForm(); 
     });
   }
   populateForm() {
     this.EditForm.patchValue({
       booktitle: this.BookDetails.title,
-      category: this.BookDetails.category,
-      author: this.BookDetails.author,
+      category: this.BookDetails.Category,
+      author: this.BookDetails.author?._id,
       description: this.BookDetails.description,
-      bookimage: this.BookDetails.image,
+    
     });
+    this.imageBase64 = this.BookDetails.image; 
   }
 
   UpdateBook() {
@@ -89,7 +84,7 @@ export class AdminBooksEditFormComponent {
       category: this.EditForm.value.category,
       author: this.EditForm.value.author,
       description: this.EditForm.value.description,
-      image: this.EditForm.value.bookimage,
+      image: this.imageBase64 as string,
     };
     if (this.EditForm.valid) {
       this.notvalid = false;
@@ -106,6 +101,16 @@ export class AdminBooksEditFormComponent {
       this.router.navigate(["/Adminbooks"]);
     } else {
       this.notvalid = true;
+    }
+  }
+  selectedimage(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.imageBase64 = e.target.result;
+      };
+      reader.readAsDataURL(file); 
     }
   }
 }

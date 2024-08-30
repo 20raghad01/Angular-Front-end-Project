@@ -14,6 +14,8 @@ import { Router, RouterLink } from '@angular/router';
 export class UserRegisterComponent {
   RegisterForm!:FormGroup;
   notvalid:boolean=false;
+  imageBase64: string | ArrayBuffer | null = null;
+
   constructor(private user:UserServiceService,private router:Router){
     this.RegisterForm=new FormGroup({
       userfname: new FormControl('', Validators.required),
@@ -33,23 +35,39 @@ export class UserRegisterComponent {
   }
   AddUser(){
     if (this.RegisterForm.valid) {
-      const formData = new FormData();
-      formData.append('firstName', this.RegisterForm.controls['userfname'].value);
-      formData.append('lastName', this.RegisterForm.controls['userlname'].value);
-      formData.append('image', this.RegisterForm.controls['userimage'].value);
-      formData.append('password', this.RegisterForm.controls['password'].value);
-      formData.append('email', this.RegisterForm.controls['email'].value);
-      this.notvalid=false;
-      this.user.register(formData).subscribe((res)=>{
-        console.log(res)
-        
-      })
-      this.router.navigate(['/UserLogin']);
+      const formData = {
+      firstName:this.RegisterForm.controls['userfname'].value,
+      lastName:this.RegisterForm.controls['userlname'].value,
+      image:this.imageBase64 as string,
+      password:this.RegisterForm.controls['password'].value,
+      email:this.RegisterForm.controls['email'].value,
+      role:'user'};
+      this.notvalid = false;
+      this.user.register(formData).subscribe({
+        next: (res) => {
+          console.log(res);
+          this.router.navigate(['/UserLogin']);
+        },
+        error: (err) => {
+          console.error('Error:', err);
+          this.notvalid = true;
+        }
+      });
+    } else {
+      this.notvalid = true;
     }
-    else{
-      this.notvalid=true;
-    }
-    
   }
+  selectedimage(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.imageBase64 = e.target.result;
+      };
+      reader.readAsDataURL(file); // You can also use reader.readAsArrayBuffer(file) or other methods if needed
+    }
+  }
+
+  
 
 }

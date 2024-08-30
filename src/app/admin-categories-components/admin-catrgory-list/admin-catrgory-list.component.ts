@@ -17,7 +17,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 })
 export class AdminCatrgoryListComponent {
   CategoriessList!:any;
-
+  isLoading: boolean = true;
   constructor(private categories:CategoriesServiceService,private router:Router){
     
   }
@@ -27,6 +27,7 @@ export class AdminCatrgoryListComponent {
   GetCategoriess(){
     this.categories.getCategories().subscribe((response:any)=>{
       this.CategoriessList=response
+      this.isLoading = false;
       
     })
   }

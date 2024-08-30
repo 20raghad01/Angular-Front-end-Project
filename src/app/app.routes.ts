@@ -9,7 +9,6 @@ import { AuthorsComponent } from './components/authors/authors.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { CategoryComponent } from './components/category/category.component';
 import { StartPageComponent } from './components/start-page/start-page.component';
-import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { AdminCatrgoryListComponent } from './admin-categories-components/admin-catrgory-list/admin-catrgory-list.component';
 import { AdminAuthorListComponent } from './admin-author-components/admin-author-list/admin-author-list.component';
 import { AdminBooksListComponent } from './admin-books-components/admin-books-list/admin-books-list.component';
@@ -37,7 +36,7 @@ export const routes: Routes = [
 
     { path: 'categories', component:CategoriesComponent ,canActivate:[userGuardGuard]},
     { path: 'category/:id', component:CategoryComponent ,canActivate:[userGuardGuard]},
-    { path: 'AdminLogin', component:AdminPanelComponent},
+   
     {path:'Admincategory',component:AdminCatrgoryListComponent,title:'admin',canActivate:[authGuardGuard]},
     {path:'Adminauthors',component:AdminAuthorListComponent,title:'admin',canActivate:[authGuardGuard]},
     {path:'Adminbooks',component:AdminBooksListComponent,title:'admin',canActivate:[authGuardGuard]},

@@ -1,15 +1,25 @@
-<app-navbar></app-navbar>
+<div *ngIf="isLoading" class="text-center w-100 h-100 bg-body-light d-flex align-items-center justify-content-center flex-column">
+    <div>
+      <img src="assets/imgs/loading.webp" alt="Loading..." />
+    </div>
+    <div>
+      <h2>Sorry for the Inconvenience please hold on a bit ...</h2>
+    </div>
+   
+  </div>
+<app-navbar [ID]="tok"></app-navbar>
 
 <section class="mt-5">
     <div class="container">
         <div class="row mt-5 text-center paginate">
-            <div class="col-12 col-md-6 col-lg-3" *ngFor="let item of (categoryArray | paginate: { itemsPerPage: 8, currentPage: p })">
-                <div *ngIf="item.Category == categoryId" class="box mb-5 text-center Boxes">
+            <div class="col-12 col-md-6 col-lg-3"
+                 [ngClass]="{'d-none': item.Category != categoryId}"
+                 *ngFor="let item of (categoryArray | paginate: { itemsPerPage: 8, currentPage: p })">
+                <div class="box mb-5 text-center Boxes">
                     <img [src]="item.image" alt="Book Image" class="w-100">
                     <div class="content mt-3">
                         <a (click)="singlebook(item._id)">{{ item.title }}</a>
-                        <a (click)="author(item._id)">{{ item.author["firstName"] }}
-                            {{ item.author["lastName"] }}</a>
+                        <a (click)="author(item._id)">{{ item.author.firstName }} {{ item.author.lastName }}</a>
                     </div>
                 </div>
             </div>

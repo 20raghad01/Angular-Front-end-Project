@@ -14,7 +14,7 @@ export class AdminServiceService {
   }
   logout(): void {
     localStorage.removeItem('token');
-    this.router.navigate(['/AdminLogin']);
+    this.router.navigate(['/']);
   }
   isLoggedIn(): boolean {
     return !!localStorage.getItem('token');

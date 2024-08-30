@@ -19,12 +19,17 @@ export class NavbarComponent {
   constructor(private out:UserServiceService,private serv:UserServiceService){}
   ngOnInit() {
     this.decodedinfo=jwtDecode(this.ID);
+    console.log(this.decodedinfo);
+    this.getuser();
     
-    //this.serv.getOneUser(this.ID).subscribe((response:any)=>{
-      //this.UserDetails=response;
+  }
+  getuser(){
+    this.serv.getOneUser(this.decodedinfo.id).subscribe((response:any)=>{
+      this.UserDetails=response;
+      console.log("user details",this.UserDetails)
       
-      
-    //})
+    })
+
   }
   logout(){
     this.out.logout();

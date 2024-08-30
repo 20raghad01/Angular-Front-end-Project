@@ -18,12 +18,7 @@
     justify-content: space-between;
 }
 
-.booksInfo{
-    display: flex;
-    align-items: baseline;
-    gap: 13px;
-    
-}
+
 
 @media (max-width: 991px ) {
     .content{
@@ -37,5 +32,8 @@
     
     .stars{
         margin-bottom: 20px;
+    }
+    .booksInfo{
+        flex-direction: column;
     }
 }

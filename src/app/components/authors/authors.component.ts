@@ -7,6 +7,7 @@ import { GetAuthorsService } from '../../services/get-authors.service';
 
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FooterComponent } from "../footer/footer.component";
+import { jwtDecode } from 'jwt-decode';
 
 @Component({
   selector: 'app-authors',
@@ -17,16 +18,22 @@ import { FooterComponent } from "../footer/footer.component";
 })
 export class AuthorsComponent {
   p: number = 1;
-
+  isLoading: boolean = true;
   // Dynamic
   authorsArray!: Array<any>;
 
   constructor(private router:Router, private authorsService: GetAuthorsService){
     authorsService.getauthors().subscribe((response: any) =>{
       this.authorsArray = response;
-      console.log(this.authorsArray)
+      this.isLoading = false;
       
     })
+    
+  }
+  tok!:any;
+  
+  ngOnInit(){
+    this.tok=localStorage.getItem('Usertoken');
     
   }
 

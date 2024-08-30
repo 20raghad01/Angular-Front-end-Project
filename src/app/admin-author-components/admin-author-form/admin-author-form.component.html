@@ -29,13 +29,13 @@
               <label for="lname" class="form-label fw-normal">Author Nationality</label>
               <input type="text"  id="lname" formControlName="authornationality" class="form-control">
             </div>
-            <!-- <div class="mb-3">
+            <div class="mb-3">
               <label for="image" class="form-label fw-normal">Author Image</label>
-              <input type="file" id="image" formControlName="authorimage" class="form-control">
+              <input type="file" id="image" formControlName="authorimage" class="form-control" (change)="selectedimage($event)">
             </div>
             @if(notvalid){
               <div class="mb-2"><span class="text-danger fw-normal">Make sure you Enter First Name and Last Name at least </span></div>
-            } -->
+            }
             <button type="submit" class="btn btnblue">Add Author</button>
           </form>
         </div>

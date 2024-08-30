@@ -38,7 +38,7 @@ export class AdminCategoryEditFormComponent {
   
   populateForm() {
     this.EditForm.patchValue({
-      categorytitle: this.CategoryDetails.title,
+      categorytitle: this.CategoryDetails.name,
       
     });
 
@@ -47,7 +47,7 @@ export class AdminCategoryEditFormComponent {
   
   UpdateCategory(){
     var data={
-      title:this.EditForm.value.categorytitle
+      name:this.EditForm.value.categorytitle
     }
     if(this.EditForm.valid){
       this.notvalid=false;
@@ -62,7 +62,7 @@ export class AdminCategoryEditFormComponent {
       })
       
       
-      this.router.navigate(['/adminhome'])
+      this.router.navigate(['/Admincategory'])
     }
     else{
       this.notvalid=true;

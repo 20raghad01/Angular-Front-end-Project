@@ -19,6 +19,7 @@ import { AuthorServiceService } from "../../services/author-service.service";
 export class AdminAuthorFormComponent {
   addForm!: FormGroup;
   notvalid: boolean = false;
+  imageBase64: string | ArrayBuffer | null = null;
   constructor(private authors: AuthorServiceService) {
     this.addForm = new FormGroup({
       authorfname: new FormControl("", [
@@ -31,7 +32,7 @@ export class AdminAuthorFormComponent {
         Validators.minLength(3),
         Validators.maxLength(200),
       ]),
-      //authorimage: new FormControl(null),
+      authorimage: new FormControl(''),
       authornationality: new FormControl("", Validators.required),
     });
   }
@@ -40,7 +41,7 @@ export class AdminAuthorFormComponent {
       var data = {
         firstName: this.addForm.value.authorfname,
         lastName: this.addForm.value.authorlname,
-        //image:this.addForm.value.authorimage,
+        image:this.imageBase64 as string,
         nationality: this.addForm.value.authornationality,
       };
 
@@ -50,6 +51,16 @@ export class AdminAuthorFormComponent {
       });
     } else {
       this.notvalid = true;
+    }
+  }
+  selectedimage(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.imageBase64 = e.target.result;
+      };
+      reader.readAsDataURL(file); 
     }
   }
 }

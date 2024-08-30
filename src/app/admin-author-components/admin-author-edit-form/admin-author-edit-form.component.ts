@@ -24,6 +24,7 @@ export class AdminAuthorEditFormComponent {
   CategoriessList!: any;
   priceList!: any;
   notvalid: boolean = false;
+  imageBase64: string | ArrayBuffer | null = null;
 
   constructor(
     private routerActive: ActivatedRoute,
@@ -31,8 +32,8 @@ export class AdminAuthorEditFormComponent {
     private router: Router
   ) {
     this.EditForm = new FormGroup({
-      authorfname: new FormControl("", Validators.required),
-      authorlname: new FormControl("", Validators.required),
+      authorfname: new FormControl("", [Validators.required, Validators.minLength(3)]),
+      authorlname: new FormControl("", [Validators.required, Validators.minLength(3)]),
       authorimage: new FormControl(""),
       authornationality: new FormControl(""),
     });
@@ -50,16 +51,16 @@ export class AdminAuthorEditFormComponent {
     this.EditForm.patchValue({
       authorfname: this.AuthorDetails.firstName,
       authorlname: this.AuthorDetails.lastName,
-      authorimage: this.AuthorDetails.image,
       authornationality: this.AuthorDetails.nationality,
     });
+    this.imageBase64 = this.AuthorDetails.image; 
   }
 
   UpdateAuthor() {
     var data = {
       firstName: this.EditForm.value.authorfname,
       lastName: this.EditForm.value.authorlname,
-      image: this.EditForm.value.authorimage,
+      image: this.imageBase64 as string,
       nationality: this.EditForm.value.authornationality,
     };
     if (this.EditForm.valid) {
@@ -77,6 +78,16 @@ export class AdminAuthorEditFormComponent {
       this.router.navigate(["/Adminauthors"]);
     } else {
       this.notvalid = true;
+    }
+  }
+  selectedimage(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.imageBase64 = e.target.result;
+      };
+      reader.readAsDataURL(file); 
     }
   }
 }

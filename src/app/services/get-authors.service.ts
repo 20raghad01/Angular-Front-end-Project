@@ -6,7 +6,7 @@ import { Observable } from "rxjs";
   providedIn: "root",
 })
 export class GetAuthorsService {
-  private baseUrl = "http://localhost:3000/api/authors";
+  private baseUrl = "http://localhost:3001/api/authors";
 
   constructor(private http: HttpClient) {}
 

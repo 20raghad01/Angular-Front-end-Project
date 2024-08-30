@@ -49,11 +49,12 @@
                     <div data-mdb-input-init class="form-outline flex-fill mb-0">
                       <label class="form-label" for="image">Image</label>
                       <input   
-                      type="text"
+                      type="file"
                       id="image"
                       name="image"
                       class="form-control"
-                      formControlName="userimage"/>
+                      formControlName="userimage"
+                      (change)="selectedimage($event)"/>
                       
                     </div>
                   </div>

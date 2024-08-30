@@ -1,4 +1,13 @@
-<app-navbar></app-navbar>
+<div *ngIf="isLoading" class="text-center w-100 h-100 bg-body-light d-flex align-items-center justify-content-center flex-column">
+  <div>
+    <img src="assets/imgs/loading.webp" alt="Loading..." />
+  </div>
+  <div>
+    <h2>Sorry for the Inconvenience please hold on a bit ...</h2>
+  </div>
+ 
+</div>
+<app-navbar [ID]="tok"></app-navbar>
 
 <section class="mt-5">
   <div class="container">

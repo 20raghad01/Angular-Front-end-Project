@@ -1,4 +1,13 @@
-<app-navbar></app-navbar>
+<div *ngIf="isLoading" class="text-center w-100 h-100 bg-body-light d-flex align-items-center justify-content-center flex-column">
+    <div>
+      <img src="assets/imgs/loading.webp" alt="Loading..." />
+    </div>
+    <div>
+      <h2>Sorry for the Inconvenience please hold on a bit ...</h2>
+    </div>
+   
+  </div>
+<app-navbar [ID]="tok"></app-navbar>
 
 <section class="product mt-5">
     <div class="container-fluid">
@@ -15,44 +24,41 @@
             </div>
         </div>
 
-        <div class="AuthorBooks p-5 text-dark">
+        <div class="AuthorBooks p-5 text-dark mt-5">
             <h4 style="color: #645b4a" class="fs-2">Author's Books:</h4>
-
+        
             <div class="mt-4">
-                @for (item of authorDetails.reviews; track $index) {
-                <div class="books">
-                    <div class="booksInfo">
-                        <i class="fa-solid fa-book-open"></i>
-                        <!--Book Image-->
-                        <div class="">
-                            <h4 style="color: #565657">{{ item.reviewerName }}</h4>
-                            <!--Book Name-->
-
-                            <div class="d-flex gap-3">
-                                <p class="text-start stars" [innerHTML]="convertRatingToStars(authorDetails.rating)">
-                                    <!-- StarsRating -->
-                                </p>
-                                <p>{{ authorDetails.rating }}</p>
-                                <p>- {{ authorDetails.rating }} ratings</p>
-                            </div>
+                <!-- Iterate over authorbook -->
+                <div *ngFor="let item of authorbook" class="books d-flex flex-column"
+                     [ngClass]="{'d-none': item.author._id !== authorDetails._id}">
+                    <div class="booksInfo d-flex align-items-start">
+                        <div class="w-25 h-50 m-3">
+                            <img [src]="item.image" alt="book" class="w-100">
+                        </div>
+                        
+                        <!-- Book Image -->
+                        <div class="w-75 d-flex justify-content-start flex-column m-3">
+                            <h4 style="color: #565657">{{ item.title }}</h4>
+                            <p>{{ item.description }}</p>
+                            <!-- Book Name -->
+                            
+                            <!-- StarsRating or any additional info can be added here -->
                         </div>
                     </div>
                     <div class="ownReview">
                         <div class="dropdown">
                             <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
+                                    aria-expanded="false">
                                 Read
-                                <!--Return Backend-->
+                                <!-- Return Backend -->
                             </button>
                             <ul class="dropdown-menu">
-                                <li>
-                                    <a class="dropdown-item active" href="#">Currently read</a>
-                                </li>
+                                <li><a class="dropdown-item active" href="#">Currently read</a></li>
                                 <li><a class="dropdown-item" href="#">Want to read</a></li>
                                 <li><a class="dropdown-item" href="#">Read</a></li>
                             </ul>
                         </div>
-
+        
                         <div class="stars mt-3 fs-5">
                             <i class="fa-regular fa-star"></i>
                             <i class="fa-regular fa-star"></i>
@@ -62,9 +68,12 @@
                         </div>
                     </div>
                 </div>
-                }
             </div>
         </div>
+        
+        
+        
+        
     </div>
 </section>
 

@@ -8,6 +8,7 @@ import { CommonModule } from "@angular/common";
 import { Router } from "@angular/router";
 import { GetbooksService } from "../../../services/getbooks.service";
 import { FooterComponent } from "../../footer/footer.component";
+import { jwtDecode } from "jwt-decode";
 
 @Component({
   selector: "app-books",
@@ -25,15 +26,21 @@ import { FooterComponent } from "../../footer/footer.component";
 export class BooksComponent {
   // Paginator
   p: number = 1;
-
+  isLoading: boolean = true;
   // Dynamic
   productsArray!: Array<any>;
 
   constructor(private router: Router, private booksService: GetbooksService) {
     booksService.getBooks().subscribe((response: any) => {
       this.productsArray = response;
-      console.log(this.productsArray);
+      this.isLoading = false;
     });
+  }
+  tok!:any;
+  
+  ngOnInit(){
+    this.tok=localStorage.getItem('Usertoken');
+    
   }
 
   singlebook(productId: number) {

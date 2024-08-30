@@ -18,7 +18,7 @@ export class UserLoginComponent {
   decodedToken!:any;
   constructor(private router:Router,private serv:UserServiceService){
     this.UserForm=new FormGroup({
-      username: new FormControl('', Validators.required),
+      email: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required)
     })
     
