@@ -22,6 +22,16 @@
     margin-top: 15px;
 }
 
+.rating{
+    color: #645b4a;
+    font-size: 18px;
+}
+
+.rating p{
+    font-size: 21px;
+    color: #565657;
+}
+
 .status{
     color: #565657;
     padding: 10px;

@@ -10,7 +10,8 @@
     color: #565657;
 }
 
-.book p{
+.author p{
+    width: 80%;
     line-height: 1.6;
     font-size: 18px;
 }
@@ -22,9 +23,15 @@
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
     
 }
-.stars{
+
+.rating{
     color: #645b4a;
     font-size: 18px;
+}
+
+.rating p{
+    font-size: 21px;
+    color: #565657;
 }
 
 .status{
