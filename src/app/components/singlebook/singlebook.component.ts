@@ -11,10 +11,11 @@ import { CommonModule } from "@angular/common";
 @Component({
   selector: "app-singlebook",
   standalone: true,
-  imports: [NavbarComponent, InputTextModule, FormsModule, InputNumberModule,CommonModule],
+  imports: [NavbarComponent, InputTextModule, FormsModule, InputNumberModule],
   templateUrl: "./singlebook.component.html",
   styleUrl: "./singlebook.component.css",
 })
+
 export class SinglebookComponent {
   name!: any;
   rate!: any;
@@ -34,6 +35,7 @@ export class SinglebookComponent {
       this.book.getbookById(bookId).subscribe((response) => {
         this.bookDetails = response;
         this.isLoading = false;
+        console.log(this.bookDetails);
       });
     }
   }
