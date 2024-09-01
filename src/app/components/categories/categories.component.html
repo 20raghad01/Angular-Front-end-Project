@@ -11,11 +11,11 @@
 
 <div class="container-fluid p-5">
     <div class="row categories paginate text-center"> 
-        <div class="col-12 col-md-6 col-lg-3 categorey Boxes p-5 mb-4" *ngFor="let item of categoriesArray | paginate: { itemsPerPage: 6, currentPage: p }; let i = index"
-            (click)="category(item._id)"
+        <div class="col-12 col-md-6 col-lg-3 categorey Boxes p-5 mb-4" *ngFor="let category of categoriesArray | paginate: { itemsPerPage: 6, currentPage: p }; let i = index"
+            (click)="category(category._id)"
         >
             <img [src]="img" alt="">
-            <p>{{ item.name }}</p><!---Book Name-->
+            <p>{{ category.name }}</p><!---Book Name-->
         </div>
         
         <pagination-controls (pageChange)="p = $event"></pagination-controls>

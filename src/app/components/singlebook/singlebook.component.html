@@ -9,7 +9,7 @@
 
 <app-navbar></app-navbar>
 
-<section class="product mt-5">
+<section class="product p-5 pt-2">
   <div class="container-fluid">
     <div class="row mt-5">
       <div class="col-12 col-md-4">
@@ -17,18 +17,20 @@
       </div>
 
       <div class="col-12 col-md-8 p-5 bookDetail">
-        <h1 style="color: #565657;">{{ bookDetails.title }}</h1>
         <!--Book Name-->
-        <h3 style="color: #645b4a;">
+        <h1>{{ bookDetails.title }}</h1>
+        <!--by Book Author-->
+        <h3>
           {{ bookDetails.author["firstName"] }}
           {{ bookDetails.author["lastName"] }}
         </h3>
-        <!--by Book Author-->
-        <h5>{{ bookDetails.Category }}</h5>
-        <!--Category Author-->
-        <h5>{{ bookDetails.description }}</h5>
-        <!--Description-->
+        <!--by Book Category-->
+        <h4>{{ getCategoryNameById(bookDetails.Category) }}</h4>
 
+        <!--Description-->
+        <p style="width: 80%;">{{ bookDetails.description }}</p>
+
+        <!-- Rating -->
         <div class="rating d-flex gap-3 stars mb-0">
           <p
             class="text-start"
@@ -40,7 +42,8 @@
           <p>- {{ bookDetails.rating }} ratings</p>
         </div>
 
-        <div class="ownReview">
+        <!-- your Review -->
+        <div class="yourReview">
           <div class="dropdown">
             <button
               class="btn btn-light btn-sm dropdown-toggle"
@@ -60,15 +63,22 @@
             </ul>
           </div>
 
+          <!-- Stars -->
           <!-- <i class="fa-solid fa-star"></i> -->
-          <div class="stars mt-3 fs-5">
-            <i *ngFor="let star of stars; let i = index"
-              class="fa-regular fa-star fs-4"
-              [attr.data-value]="i + 1" 
-              (click)="onStarClick(i + 1)"
-            >
+          <div class="yourstars mt-3">
+            <i *ngFor="let star of stars; let i = index" 
+                [ngClass]="{
+                    'fa-solid': i < currentHoveredStar,
+                    'fa-regular': i >= currentHoveredStar,
+                    'fa-star': true
+                }"
+                [attr.data-value]="i + 1" 
+                (click)="onStarClick(i + 1)"
+                (mouseenter)="onStarHover(i + 1)"
+                (mouseleave)="onStarLeave()">
             </i>
           </div>
+          
         </div>
       </div>
     </div>
@@ -98,7 +108,7 @@
         }
       </div>
 
-      <!-- Add Own Review -->
+      <!-- Add Your Review -->
       <div class="d-flex flex-column gap-3 mt-4" style="color: #565657">
         <h3 style="color: #3b82f6" class="fs-2 fw-medium">
           Enter Your Review:

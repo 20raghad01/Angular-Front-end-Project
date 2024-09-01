@@ -20,9 +20,11 @@ export class CategoriesServiceService {
       categoryid
     );
   }
+  
   getOneCategory(categoryid: number) {
     return this.http.get(`https://bookstore-api-raghads-projects-28484bdc.vercel.app/api/categories/${categoryid}`);
   }
+
   EditCategory(Data: any, categoryid: number) {
     return this.http.put(
       `https://bookstore-api-raghads-projects-28484bdc.vercel.app/api/categories/${categoryid}`,

@@ -7,6 +7,15 @@ import { InputTextModule } from "primeng/inputtext";
 import { FormsModule } from "@angular/forms";
 import { InputNumberModule } from "primeng/inputnumber";
 import { CommonModule } from "@angular/common";
+import { GetcategoryService } from "../../services/getcategory.service";
+
+interface Category {
+  _id: string;
+  name: string;
+  createdAt: string;
+  // Include other properties if needed
+}
+
 
 @Component({
   selector: "app-singlebook",
@@ -21,18 +30,16 @@ export class SinglebookComponent {
   rate!: any;
   comment!: any;
   isLoading: boolean = true;
-  constructor(private route: ActivatedRoute, private book: GetbooksService) {}
+  
+  constructor(private route: ActivatedRoute, private bookService: GetbooksService, private categoryService: GetcategoryService){}
 
-  bookDetails: any = {
-    // reviews: []
-  };
-
+  bookDetails: any = {};
   ngOnInit() {
     const bookId = this.route.snapshot.params['id']
     console.log(bookId);
 
     if (bookId) {
-      this.book.getbookById(bookId).subscribe((response) => {
+      this.bookService.getbookById(bookId).subscribe((response) => {
         this.bookDetails = response;
         this.isLoading = false;
         console.log(this.bookDetails);
@@ -56,13 +63,38 @@ export class SinglebookComponent {
     );
   }
 
+  // Rate Stars
   stars = Array(5);
+  currentHoveredStar = 0;
   starRate!: number;
+  onStarHover(starValue: number) {
+    this.currentHoveredStar = starValue;
+  }
+  onStarLeave() {
+    this.currentHoveredStar = 0;
+  }
   onStarClick(starValue: number) {
     return this.starRate = starValue;
     console.log(`You clicked ${this.starRate} star(s)`);
   }
+  
+  //Category Name Of Book 
+  categoryName: string = '';
+  category: any = [];
+  getCategoryNameById(id: number){
+    this.categoryService.getCategories().subscribe(categories => {
+      const category = Array.prototype.find.call(categories, (cat:any) => cat._id === id);
 
+      if (category) {
+        this.categoryName = category.name;
+      } else {
+        this.categoryName = 'Category not found';
+      }
+    });
+    console.log(this.categoryName);
+    return this.categoryName;
+  }
+  
   // if date of review is "2024-05-23T08:56:21.618Z"
   convertDate(dateString: string): string {
     const splittedDate = dateString.split("T")[0];

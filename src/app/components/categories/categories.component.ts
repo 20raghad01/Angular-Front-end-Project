@@ -26,9 +26,7 @@ img : string= "assets/imgs/logo.png"
     categoryService.getCategories().subscribe((response: any) =>{
       this.categoriesArray = response;
       this.isLoading = false;
-      
     })
-    
   }
   tok!:any;
   

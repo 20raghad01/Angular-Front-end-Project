@@ -1,7 +1,36 @@
 
-.stars{
+.bookDetail h1{
+    font-size: 50px;
+    color: #565657;
+    font-weight: bold;
+}
+
+.bookDetail h3{
+    font-size: 25px;
+    color: #645b4a;
+}
+
+.bookDetail h4{
+    font-size: 22px;
+    color: #6a829d;
+    font-weight: 400;
+}
+
+/* .stars{
     color: #645b4a;
     font-size: 18px;
+} */
+/* .yourstars{
+    color: #645b4a;
+    font-size: 18px;
+    transition: all 0.3s;
+} */
+
+.yourstars {
+    cursor: pointer;
+    color: #645b4a;
+    font-size: 23px;
+    transition: all 0.3s;
 }
 
 .reviews{
@@ -26,6 +55,7 @@
     color: #d1d5db; /* Gray color for disabled state */
     cursor: not-allowed;
 }
+
 @media (max-width: 768px) {
     .review-form .col-md-4 {
         margin-bottom: 20px;
