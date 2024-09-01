@@ -1,18 +1,161 @@
-<section class="bg-body-tertiary ">
-    <div class="container ">
-        <div class=" d-flex flex-column justify-content-center align-items-center ">
-            <div class="blue w-100  shadow d-flex" >
-                <div class="w-50 d-flex flex-column justify-content-center align-items-center">
-                    <h1 class="block">To Explore more </h1>
-                    <a class="inline-block text-decoration-none px-5 py-2 mt-3 btnblue shadow fs-4" routerLink="/UserLogin" routerLinkActive="active">Login</a>
-
-                </div>
-                <div class="w-50 h-50 float-left">
+<section class="bg-body-tertiary shadow d-flex ">
+    <div class=" blue ">
+        <div class=" d-flex justify-content-center align-items-center ">
+            <div class="w-25 h-25 div1">
+                <div class="w-100 ">
                     <img src="assets/imgs/books.png" alt="books" class="w-100">
                 </div>
             </div>
+            
+            <div class=" w-50  div2" >
+                <div class=" d-flex flex-column justify-content-center align-items-center mt-3">
+                    <h1 class="block text-center pacifico-regular">Welcome To Good Reads  </h1>
+                    <a class="inline-block text-decoration-none px-5 py-2 mt-3 btnblue shadow fs-4 baskervville-regular" routerLink="/UserLogin" routerLinkActive="active">Login</a>
 
+                </div>
+            </div>
+            <div class="d-flex w-25 h-25 div3">
+                <div class="w-100 d-flex ">
+                    <img src="assets/imgs/229384698_11066761.svg" alt="books" class="w-100">
+                </div>
+            </div>
+            
+           
+        </div>
+    </div >
+    
+
+</section>
+<section class="border-bottom">
+    <div class="d-flex justify-content-center mt-5 ">
+        <img src="assets/imgs/Booksbg.png" class="imgsize">
+        
+    </div>
+    <h1 class="block text-center pacifico-regular">Featured Books</h1>
+    <div class="container mt-2 ">
+        <div class="row mt-5 text-center d-flex justify-content-center">
+          <div
+            class="col-12 col-sm-6 col-md-4 "
+            *ngFor="
+              let item of productsArray | slice:0:3;
+              let i = index
+            "
+          >
+            <div class="box mb-5 text-center Boxes px-5">
+              <img [src]="item.image" alt="Book Image" class="w-100" />
+              <div class="content mt-3 baskervville-regular">
+                <a (click)="singlebook(item._id)">{{ item.title }}</a>
+              </div>
+            </div>
+          </div>
+    
+          
         </div>
     </div>
 
+    
 </section>
+<section style="background-color: #fcf3ea; ">
+    <div class=" d-flex ">
+        <div class="w-50 d-flex align-items-center justify-content-center p-3">
+            <h2 class="block text-center pacifico-regular">“The more that you read, the more things you will know. The more that you learn, the more places you’ll go.” </h2>
+        </div>
+        <div class="w-50 d-flex align-items-center justify-content-center">
+            <img src="assets/imgs/reading.png" class="w-100">
+        </div>
+    </div>
+</section>
+<section class="border-bottom">
+    <div class="d-flex justify-content-center mt-5 ">
+        <img src="assets/imgs/tiny-male-author.jpg" class="imgsize">
+        
+    </div>
+    <h1 class="block text-center pacifico-regular">Featured Authors</h1>
+    <div class="container mt-2 ">
+        <div class="row mt-5 text-center d-flex justify-content-center">
+          <div
+            class="col-12 col-sm-6 col-md-4 "
+            *ngFor="
+              let item of authorsArray  | slice:0:3;
+              let i = index
+            "
+          >
+          <div class="box mb-5 text-center Boxes p-5" (click)="author(item._id)">
+            <img [src]="item.image" alt="Book Image" class="imgs" />
+  
+            <div class="author mt-3 baskervville-regular">
+              <a 
+                >{{ item.firstName }} {{ item.lastName }}</a
+              >
+            </div>
+          </div>
+          </div>
+    
+          
+        </div>
+    </div>
+
+    
+</section>
+<section class="border-bottom mb-5 bg-body-tertiary">
+    <div class="container-fluid">
+        
+        <div class="row p-5">
+            <!-- Author Section -->
+            <div class="col-12 col-md-6 col-lg-6 author">
+                <div class="row">
+                    <div class="col-12">
+                        <img src="assets/imgs/Charles.png" alt="Product Image" class="w-100" />
+                    </div>
+                </div>
+                <div class="col-12 pt-5 content text-center m-auto">
+                    <h2 class="text-center pacifico-regular">Charles John Huffam Dickens</h2>
+                    <h4 class="text-center baskervville-regular mt-3">Charles John Huffam Dickens was an English novelist, journalist, short story writer, and social critic. He created some of literature's best-known fictional characters, and is regarded by many as the greatest novelist of the Victorian era.</h4>
+                </div>
+            </div>
+            
+            <!-- Book Section -->
+            <div class="col-12 col-md-6 col-lg-6 book p-5 text-dark">
+                <div class="row">
+                    <!-- Iterate over authorbook -->
+                     <h3 class="text-center  pacifico-regular">Charles Dickens famous Books</h3>
+                    <div *ngFor="let item of productsArray" class="col-12 col-sm-12 col-md-6 col-lg-6"
+                         [ngClass]="{'d-none': item.author.firstName !== Charles}">
+                        <div class="box mb-5 text-center Boxes p-5 ">
+                            <img [src]="item.image" alt="Book Image" class="w-100" />
+                            <div class="content mt-3 baskervville-regular">
+                                <a (click)="singlebook(item._id)">{{ item.title }}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+       
+    </div>
+</section>
+<section class=" mt-5">
+    <div>
+        <div class="d-flex justify-content-center mt-5 ">
+            <img src="https://img.freepik.com/premium-vector/book-library-education-vector-illustration-school-literature-study-design-read-textbook-c_1013341-266322.jpg?w=826" class="imgsize">
+            
+        </div>
+        <h1 class="block text-center pacifico-regular mb-5">Featured categories</h1>
+    </div>
+    
+        <div class="container-fluid p-5 ">
+
+            <div class="  text-center d-flex justify-content-center align-items-center"> 
+                <div class="shadow col-12 col-md-6 col-lg-3 categorey Boxes p-5 mb-4 mx-2 background-section d-flex align-items-center justify-content-center" *ngFor="let item of categoriesArray | slice:0:3; let i = index"
+                    (click)="category(item._id)"
+                >
+                    <h2 class="baskervville-regular fs-2">{{ item.name }}</h2>
+                </div>
+                
+                
+            </div>
+        </div>
+</section>
+
+<app-footer></app-footer>
