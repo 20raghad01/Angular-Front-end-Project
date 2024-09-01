@@ -9,71 +9,99 @@
   </div>
 <app-navbar [ID]="tok"></app-navbar>
 
-<section class="product mt-5">
+<section class="product p-5 pt-2">
     <div class="container-fluid">
         <div class="row mt-5">
             <div class="col-12 col-md-6 col-lg-4">
                 <img [src]="authorDetails.image" alt="Product Image" class="w-100" />
             </div>
 
-            <div class="col-12 col-md-6 col-lg-8 mt-5 content">
-                <h4>{{ authorDetails.firstName }} {{ authorDetails.lastName }}</h4>
+            <div class="col-12 col-md-6 col-lg-8 p-5 author">
+                <h1>{{ authorDetails.firstName }} {{ authorDetails.lastName }}</h1>
 
-                <h5>{{ authorDetails.nationality }}</h5>
+                <h3>{{ authorDetails.nationality }}</h3>
                 <!--Life-->
             </div>
         </div>
 
+        <!-- Author's Books -->
         <div class="AuthorBooks p-5 text-dark mt-5">
-            <h1 style="color: #645b4a" class="fs-2">Author's Books:</h1>
+            <h1 style="color: #645b4a" class="fs-1">Author's Books:</h1>
         
+            <!-- Book Details -->
             <div class="mt-4">
-                <!-- Iterate over authorbook -->
-                <div *ngFor="let item of authorbook" class="books d-flex flex-column"
-                    [ngClass]="{'d-none': item.author._id !== authorDetails._id}">
-                    <div class="booksInfo d-flex align-items-start">
+                <div *ngFor="let author of authorbook" class="books"
+                    [ngClass]="{'d-none': author.author._id !== authorDetails._id}">
+                    <div class="booksInfo d-flex">
                         <div class="w-25 h-50 m-3">
-                            <img [src]="item.image" alt="book" class="w-100">
+                            <img [src]="author.image" alt="book" class="w-100">
                         </div>
                         
-                        <!-- Book Image -->
-                        <div class="w-75 d-flex justify-content-start flex-column m-3">
-                            <h2 style="color: #565657">{{ item.title }}</h2>
-                            <p class="w-75" style="font-size: 16px;">{{ item.description }}</p>
-                            <!-- Book Name -->
+                        <div class="w-75 d-flex justify-content-start flex-column book p-5">
+                            <h1 style="color: #565657">{{ author.title }}</h1>
+                            <p class="w-75">{{ author.description }}</p>                            
                             
-                            <!-- StarsRating or any additional info can be added here -->
-                        </div>
-                    </div>
-                    <div class="yourReview">
-                        <div class="dropdown">
-                            <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                Read
-                                <!-- Return Backend -->
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item active" href="#">Currently read</a></li>
-                                <li><a class="dropdown-item" href="#">Want to read</a></li>
-                                <li><a class="dropdown-item" href="#">Read</a></li>
-                            </ul>
-                        </div>
-        
-                        <div class="stars mt-3 fs-5">
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
+                            <!-- Rating -->
+                            <div class="rating d-flex gap-3 stars mb-0">
+                                <p
+                                class="text-start"
+                                [innerHTML]="convertRatingToStars(author.rating)"
+                                >
+                                <!-- StarsRating -->
+                                </p>
+                                <p>{{ author.rating }}</p>
+                                <p>- {{ author.rating }} ratings</p>
+                            </div>
+
+                            <!-- your status -->
+                            <div class="yourStatus mt-3">
+                                <div class="dropdown">
+                                <button
+                                    class="btn btn-light btn-sm dropdown-toggle status"
+                                    type="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                                    [ngStyle]="{
+                                    width: selectedStatus === 'Currently read' || selectedStatus === 'Want to read' ? '20%' : '15%'
+                                    }"
+                                >
+                                    {{ selectedStatus }}
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                    <a class="dropdown-item" href="#" (click)="onStatusClick('Currently read',$event)">Currently read</a>
+                                    </li>
+                                    <li>
+                                    <a class="dropdown-item" href="#" (click)="onStatusClick('Want to read',$event)">Want to read</a>
+                                    </li>
+                                    <li>
+                                    <a class="dropdown-item" href="#" (click)="onStatusClick('Read',$event)">Read</a>
+                                    </li>
+                                </ul>
+                                </div>
+                    
+                                <!-- Stars -->
+                                <!-- <i class="fa-solid fa-star"></i> -->
+                                <div class="yourstars mt-3">
+                                <i *ngFor="let star of stars; let i = index" 
+                                    [ngClass]="{
+                                        'fa-solid': i < currentHoveredStar,
+                                        'fa-regular': i >= currentHoveredStar,
+                                        'fa-star': true
+                                    }"
+                                    [attr.data-value]="i + 1" 
+                                    (click)="onStarClick(i + 1)"
+                                    (mouseenter)="onStarHover(i + 1)"
+                                    (mouseleave)="onStarLeave()">
+                                </i>
+                                </div>
+                                
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
-        
-        
-        
     </div>
 </section>
 

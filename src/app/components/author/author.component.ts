@@ -82,4 +82,28 @@ export class AuthorComponent {
       emptyStarIcon.repeat(emptyStars)
     );
   }
+
+  // Status Dropdown
+  selectedStatus: string = 'Read';
+  onStatusClick(status: string, event: MouseEvent){
+    event.preventDefault();
+    return this.selectedStatus = status;
+    // Handle backend logic here if needed
+  }
+
+  // Rate Stars
+  stars = Array(5);
+  currentHoveredStar = 0;
+  starRate!: number;
+  onStarHover(starValue: number) {
+    this.currentHoveredStar = starValue;
+  }
+  onStarLeave() {
+    this.currentHoveredStar = 0;
+  }
+  onStarClick(starValue: number) {
+    return this.starRate = starValue;
+    console.log(`You clicked ${this.starRate} star(s)`);
+    // Handle backend logic here if needed
+  }
 }

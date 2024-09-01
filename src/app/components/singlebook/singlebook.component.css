@@ -6,24 +6,22 @@
 }
 
 .bookDetail h3{
-    font-size: 30px;
+    font-size: 35px;
     color: #645b4a;
-    margin-top: 10px;
 }
 
 .bookDetail h4{
     font-size: 26px;
     color: #6a829d;
     font-weight: 400;
-    margin-top: 10px;
 }
 
 .bookDetail p{
-    font-size: 20px;
     line-height: 1.3;
     font-size: 17px;
     margin-top: 15px;
 }
+
 .status{
     color: #565657;
     padding: 10px;
@@ -44,7 +42,7 @@
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
-.reviewer{
+/* .reviewer{
     display: flex;
     align-items: baseline;
     gap: 13px;
@@ -56,9 +54,9 @@
 }
 
 .disabled-icon {
-    color: #d1d5db; /* Gray color for disabled state */
+    color: #d1d5db;
     cursor: not-allowed;
-}
+} */
 
 @media (max-width: 768px) {
     .review-form .col-md-4 {

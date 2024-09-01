@@ -42,8 +42,8 @@
           <p>- {{ bookDetails.rating }} ratings</p>
         </div>
 
-        <!-- your Review -->
-        <div class="yourReview mt-3">
+        <!-- your status -->
+        <div class="yourStatus mt-3">
           <div class="dropdown">
             <button
               class="btn btn-light btn-sm dropdown-toggle status"
@@ -94,19 +94,19 @@
       <h4 style="color: #645b4a" class="fs-2">Reviews:</h4>
 
       <div class="row">
-        @for (item of bookDetails.reviews; track $index) {
+        @for (book of bookDetails.reviews; track $index) {
         <div class="col-12 col-md-4">
           <div class="reviewer">
             <i class="fa-solid fa-user-astronaut fs-3 mt-4"></i>
-            <h4 style="color: #565657">{{ item.reviewerName }}</h4>
+            <h4 style="color: #565657">{{ book.reviewerName }}</h4>
           </div>
 
-          <h4 class="fw-normal">{{ convertDate(item.date) }}</h4>
-          <p class="fs-5">{{ item.comment }}</p>
+          <h4 class="fw-normal">{{ convertDate(book.date) }}</h4>
+          <p class="fs-5">{{ book.comment }}</p>
 
           <p
             class="text-start stars mt-0 mb-0"
-            [innerHTML]="convertRatingToStars(item.rating)"
+            [innerHTML]="convertRatingToStars(book.rating)"
           >
             <!-- StarsRating -->
           </p>

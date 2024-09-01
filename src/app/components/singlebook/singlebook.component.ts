@@ -9,14 +9,6 @@ import { InputNumberModule } from "primeng/inputnumber";
 import { CommonModule } from "@angular/common";
 import { GetcategoryService } from "../../services/getcategory.service";
 
-interface Category {
-  _id: string;
-  name: string;
-  createdAt: string;
-  // Include other properties if needed
-}
-
-
 @Component({
   selector: "app-singlebook",
   standalone: true,
@@ -100,7 +92,6 @@ export class SinglebookComponent {
     console.log(`You clicked ${this.starRate} star(s)`);
     // Handle backend logic here if needed
   }
-  
   
   // if date of review is "2024-05-23T08:56:21.618Z"
   convertDate(dateString: string): string {
