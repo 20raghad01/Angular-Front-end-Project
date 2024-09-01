@@ -25,37 +25,18 @@ export class AdminAuthorListComponent {
     this.GetAuthors();
   }
   GetAuthors(){
-    this.authors.getAuthors().subscribe({
-      next:(response: any) => {
-        this.AuthorsList = response;
-        this.isLoading = false;
-      },
-      error:(error) => {
-        console.error('Error fetching categories:', error);
-        this.isLoading = false;
-      }
-  });
+    this.authors.getAuthors().subscribe((response:any)=>{
+      this.AuthorsList=response;
+      this.isLoading = false;
+    })
   }
 
   DeleteAuthor(authorid:number){
-    const isConfirmed = window.confirm('Are you sure you want to delete this Author?');
-  
-  if (isConfirmed) {
-    this.isLoading = true;
-    this.authors.deleteAuthor(authorid).subscribe({
-      next:(response) => {
+    this.authors.deleteAuthor(authorid).subscribe((response) => {
         console.log('Author deleted:', response);
-        this.GetAuthors();
-        this.isLoading = false;
-      },
-      error:(error) => {
-        console.error('Error deleting category:', error);
-        const errorMessage = error.error?.message || error.message || 'An unexpected error occurred';
-          alert(`Error: ${errorMessage}`);
-          this.isLoading = false;
       }
-    });
-  }
+      
+    );
     
   }
   EditAuthor(authorid:number){

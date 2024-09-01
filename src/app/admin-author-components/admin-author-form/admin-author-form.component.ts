@@ -48,7 +48,6 @@ export class AdminAuthorFormComponent {
       this.notvalid = false;
       this.authors.addAuthor(data).subscribe((res) => {
         console.log(res);
-        alert("Author Added")
       });
     } else {
       this.notvalid = true;

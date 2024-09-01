@@ -95,8 +95,6 @@ export class AdminBooksEditFormComponent {
         },
         error: (err: any) => {
           console.log(err);
-          const errorMessage = err.error?.message || err.message || 'An unexpected error occurred';
-          alert(`Error: ${errorMessage}`);
         },
       });
 

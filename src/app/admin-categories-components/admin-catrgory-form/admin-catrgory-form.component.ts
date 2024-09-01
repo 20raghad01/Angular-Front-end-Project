@@ -30,7 +30,6 @@ export class AdminCatrgoryFormComponent {
       var formData = { name: this.AddForm.controls["cattitle"].value };
       this.categories.addCategory(formData).subscribe((res) => {
         console.log(res);
-        alert("Category Added");
       });
     } else {
       this.notvalid = true;

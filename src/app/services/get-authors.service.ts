@@ -10,7 +10,7 @@ export class GetAuthorsService {
 
   constructor(private http: HttpClient) {}
 
-  getauthors(): Observable<any>  {
+  getauthors() {
     return this.http.get(`${this.baseUrl}`);
   }
 

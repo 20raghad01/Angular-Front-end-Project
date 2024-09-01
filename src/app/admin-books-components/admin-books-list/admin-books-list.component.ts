@@ -27,36 +27,18 @@ export class AdminBooksListComponent {
     this.GetBooks();
   }
   GetBooks(){
-    this.books.getbooks().subscribe({
-      next:(response: any) => {
-        this.BooksList = response;
-        this.isLoading = false;
-      },
-      error:(error) => {
-        console.error('Error fetching Books:', error);
-        this.isLoading = false;
-      }
-  });
+    this.books.getbooks().subscribe((response:any)=>{
+      this.BooksList=response
+      this.isLoading = false;
+    })
   }
   DeleteBook(bookid:number){
-    const isConfirmed = window.confirm('Are you sure you want to delete this Book?');
-  
-  if (isConfirmed) {
-    this.isLoading = true;
-    this.books.deletebook(bookid).subscribe({
-      next:(response) => {
+    this.books.deletebook(bookid).subscribe((response) => {
         console.log('Book deleted:', response);
-        this.GetBooks();
-        this.isLoading = false;
-      },
-      error:(error) => {
-        console.error('Error deleting Book:', error);
-        const errorMessage = error.error?.message || error.message || 'An unexpected error occurred';
-          alert(`Error: ${errorMessage}`);
-          this.isLoading = false;
       }
-    });
-  };
+      
+    );
+    this.GetBooks();
   }
   EditBook(Bid:number){
     this.router.navigate(['/AdminBooksEdit',Bid])

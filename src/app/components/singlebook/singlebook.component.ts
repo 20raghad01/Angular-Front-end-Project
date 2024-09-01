@@ -6,12 +6,11 @@ import { NavbarComponent } from "../navbar/navbar.component";
 import { InputTextModule } from "primeng/inputtext";
 import { FormsModule } from "@angular/forms";
 import { InputNumberModule } from "primeng/inputnumber";
-import { CommonModule } from "@angular/common";
 
 @Component({
   selector: "app-singlebook",
   standalone: true,
-  imports: [NavbarComponent, InputTextModule, FormsModule, InputNumberModule,CommonModule],
+  imports: [NavbarComponent, InputTextModule, FormsModule, InputNumberModule],
   templateUrl: "./singlebook.component.html",
   styleUrl: "./singlebook.component.css",
 })

@@ -19,10 +19,10 @@ export class UserServiceService {
   isLoggedIn(): boolean {
     return !!localStorage.getItem('Usertoken');
   }
-  register(object:any): Observable<any> {
+  register(object:any){
     return this.http.post('https://bookstore-api-raghads-projects-28484bdc.vercel.app/api/auth/register',object)
    }
-   getOneUser(userid:number): Observable<any> {
+   getOneUser(userid:number){
     return this.http.get(`https://bookstore-api-raghads-projects-28484bdc.vercel.app/api/auth/${userid}`)
    }
 }

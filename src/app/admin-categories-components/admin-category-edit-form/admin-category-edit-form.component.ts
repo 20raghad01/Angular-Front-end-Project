@@ -45,31 +45,30 @@ export class AdminCategoryEditFormComponent {
 
   }
   
-  UpdateCategory() {
-    if (this.EditForm.valid) {
-      this.notvalid = false;
-      
-      const data = {
-        name: this.EditForm.value.categorytitle
-      };
-  
-      this.serv.EditCategory(data, this.CatId).subscribe({
-        next: (res: any) => {
-          alert("Category updated successfully");
-          this.router.navigate(['/Admincategory']); 
-        },
-        error: (err: any) => {
-          console.error(err); 
-          
-          const errorMessage = err.error?.message || err.message || 'An unexpected error occurred';
-          alert(`Error: ${errorMessage}`);
-        }
-      });
-      
-    } else {
-      this.notvalid = true;
+  UpdateCategory(){
+    var data={
+      name:this.EditForm.value.categorytitle
     }
+    if(this.EditForm.valid){
+      this.notvalid=false;
+      this.serv.EditCategory(data,this.CatId).subscribe({
+        next:(res:any)=>{
+          console.log(res);
+          alert("Category updated")
+        },
+        error:(err:any)=>{
+          console.log(err)
+        }
+      })
+      
+      
+      this.router.navigate(['/Admincategory'])
+    }
+    else{
+      this.notvalid=true;
+    }
+    
+    
   }
-  
 
 }

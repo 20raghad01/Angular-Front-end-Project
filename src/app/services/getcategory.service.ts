@@ -10,7 +10,7 @@ export class GetcategoryService {
 
   constructor(private http: HttpClient) {}
 
-  getCategories(): Observable<any>  {
+  getCategories() {
     return this.http.get(`${this.baseUrl}`);
   }
 
