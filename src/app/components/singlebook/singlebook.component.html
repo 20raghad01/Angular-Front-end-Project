@@ -34,12 +34,12 @@
         <div class="rating d-flex gap-3 mb-0">
           <p
             class="text-start"
-            [innerHTML]="convertRatingToStars(bookDetails.rating)"
+            [innerHTML]="convertRatingToStars(bookDetails.reviews.rating)"
           >
             <!-- StarsRating -->
           </p>
-          <p>{{ bookDetails.rating }}</p>
-          <p>- {{ bookDetails.rating }} ratings</p>
+          <p>{{ bookDetails.reviews.rating }}</p>
+          <p>- {{ bookDetails.reviews.rating }} ratings</p>
         </div>
 
         <!-- your status -->
@@ -98,11 +98,11 @@
         <div class="col-12 col-md-4">
           <div class="reviewer">
             <i class="fa-solid fa-user-astronaut fs-3 mt-4"></i>
-            <h4 style="color: #565657">{{ book.reviewerName }}</h4>
+            <h4 style="color: #565657">{{ book.reviews.title }}</h4>
           </div>
 
-          <h4 class="fw-normal">{{ convertDate(book.date) }}</h4>
-          <p class="fs-5">{{ book.comment }}</p>
+          <h4 class="fw-normal">{{ convertDate(book.content) }}</h4>
+          <p class="fs-5">{{ book.rating }}</p>
 
           <p
             class="text-start stars mt-0 mb-0"
