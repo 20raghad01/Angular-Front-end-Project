@@ -15,6 +15,8 @@ export class GetbooksService {
   }
 
   getbookById(id: number): Observable<any> {
+    console.log();
+    
     return this.http.get(`https://bookstore-api-raghads-projects-28484bdc.vercel.app/api/books/${id}`);
   }
 }
