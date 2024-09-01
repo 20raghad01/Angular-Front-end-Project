@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class StatusService {
-  private baseUrl =  'https://dummyjson.com/products';
+  private baseUrl =  'https://bookstore-api-raghads-projects-28484bdc.vercel.app/api/status/status';
 
   constructor(private http:HttpClient) { }
 

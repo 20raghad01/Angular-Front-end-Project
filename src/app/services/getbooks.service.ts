@@ -6,7 +6,7 @@ import { Observable } from "rxjs";
   providedIn: "root",
 })
 export class GetbooksService {
-  private baseUrl = "http://localhost:3001/api/books/";
+  private baseUrl = "https://bookstore-api-raghads-projects-28484bdc.vercel.app/api/books/";
 
   constructor(private http: HttpClient) {}
 

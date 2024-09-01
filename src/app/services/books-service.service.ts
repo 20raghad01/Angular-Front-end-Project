@@ -7,18 +7,18 @@ import { Injectable } from "@angular/core";
 export class BooksServiceService {
   constructor(private http: HttpClient) {}
   getbooks() {
-    return this.http.get("http://localhost:3001/api/books");
+    return this.http.get("https://bookstore-api-raghads-projects-28484bdc.vercel.app/api/books");
   }
   deletebook(bookid: number) {
-    return this.http.delete(`http://localhost:3001/api/books/${bookid}`);
+    return this.http.delete(`https://bookstore-api-raghads-projects-28484bdc.vercel.app/api/books/${bookid}`);
   }
   addbook(object: any) {
-    return this.http.post("http://localhost:3001/api/books", object);
+    return this.http.post("https://bookstore-api-raghads-projects-28484bdc.vercel.app/api/books", object);
   }
   getOneBook(bookid: number) {
-    return this.http.get(`http://localhost:3001/api/books/${bookid}`);
+    return this.http.get(`https://bookstore-api-raghads-projects-28484bdc.vercel.app/api/books/${bookid}`);
   }
   EditBook(Data: any, bookid: number) {
-    return this.http.put(`http://localhost:3001/api/books/${bookid}`, Data);
+    return this.http.put(`https://bookstore-api-raghads-projects-28484bdc.vercel.app/api/books/${bookid}`, Data);
   }
 }

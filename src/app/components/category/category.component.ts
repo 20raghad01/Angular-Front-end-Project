@@ -49,8 +49,8 @@ export class CategoryComponent {
     });
   }
 
-  singlebook(productId: number){
-    this.router.navigate(['/singleBook', productId])
+  singlebook(booktId: number){
+    this.router.navigate(['/singleBook', booktId])
   }
 
   author(Id: number){

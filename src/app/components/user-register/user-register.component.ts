@@ -64,7 +64,7 @@ export class UserRegisterComponent {
       reader.onload = (e: any) => {
         this.imageBase64 = e.target.result;
       };
-      reader.readAsDataURL(file); // You can also use reader.readAsArrayBuffer(file) or other methods if needed
+      reader.readAsDataURL(file); 
     }
   }
 

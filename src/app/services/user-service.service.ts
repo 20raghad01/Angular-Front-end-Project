@@ -10,7 +10,7 @@ export class UserServiceService {
 
   constructor(private http:HttpClient, private router: Router) { }
   login(credentials: { username: string; password: string }):Observable<any>{
-    return this.http.post('http://localhost:3001/api/auth/login',credentials)
+    return this.http.post('https://bookstore-api-raghads-projects-28484bdc.vercel.app/api/auth/login',credentials)
   }
   logout(): void {
     localStorage.removeItem('Usertoken');
@@ -20,9 +20,9 @@ export class UserServiceService {
     return !!localStorage.getItem('Usertoken');
   }
   register(object:any){
-    return this.http.post('http://localhost:3001/api/auth/register',object)
+    return this.http.post('https://bookstore-api-raghads-projects-28484bdc.vercel.app/api/auth/register',object)
    }
    getOneUser(userid:number){
-    return this.http.get(`http://localhost:3001/api/auth/${userid}`)
+    return this.http.get(`https://bookstore-api-raghads-projects-28484bdc.vercel.app/api/auth/${userid}`)
    }
 }

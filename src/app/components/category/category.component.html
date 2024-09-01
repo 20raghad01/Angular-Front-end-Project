@@ -19,7 +19,7 @@
                     <img [src]="item.image" alt="Book Image" class="w-100">
                     <div class="content mt-3">
                         <a (click)="singlebook(item._id)">{{ item.title }}</a>
-                        <a (click)="author(item._id)">{{ item.author.firstName }} {{ item.author.lastName }}</a>
+                        <a (click)="author(item.author._id)">{{ item.author.firstName }} {{ item.author.lastName }}</a>
                     </div>
                 </div>
             </div>

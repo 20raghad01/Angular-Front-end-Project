@@ -7,25 +7,25 @@ import { Injectable } from "@angular/core";
 export class CategoriesServiceService {
   constructor(private http: HttpClient) {}
   getCategories() {
-    return this.http.get("http://localhost:3001/api/categories");
+    return this.http.get("https://bookstore-api-raghads-projects-28484bdc.vercel.app/api/categories");
   }
   deleteCategory(categoryid: number) {
     return this.http.delete(
-      `http://localhost:3001/api/categories/${categoryid}`
+      `https://bookstore-api-raghads-projects-28484bdc.vercel.app/api/categories/${categoryid}`
     );
   }
   addCategory(categoryid: any) {
     return this.http.post(
-      "http://localhost:3001/api/categories",
+      "https://bookstore-api-raghads-projects-28484bdc.vercel.app/api/categories",
       categoryid
     );
   }
   getOneCategory(categoryid: number) {
-    return this.http.get(`http://localhost:3001/api/categories/${categoryid}`);
+    return this.http.get(`https://bookstore-api-raghads-projects-28484bdc.vercel.app/api/categories/${categoryid}`);
   }
   EditCategory(Data: any, categoryid: number) {
     return this.http.put(
-      `http://localhost:3001/api/categories/${categoryid}`,
+      `https://bookstore-api-raghads-projects-28484bdc.vercel.app/api/categories/${categoryid}`,
       Data
     );
   }
