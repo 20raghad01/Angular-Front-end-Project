@@ -43,23 +43,29 @@
         </div>
 
         <!-- your Review -->
-        <div class="yourReview">
+        <div class="yourReview mt-3">
           <div class="dropdown">
             <button
-              class="btn btn-light btn-sm dropdown-toggle"
+              class="btn btn-light btn-sm dropdown-toggle status"
               type="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
+              [ngStyle]="{
+                width: selectedStatus === 'Currently read' || selectedStatus === 'Want to read' ? '20%' : '15%'
+              }"
             >
-              Read
-              <!--Return Backend-->
+              {{ selectedStatus }}
             </button>
             <ul class="dropdown-menu">
               <li>
-                <a class="dropdown-item active" href="#">Currently read</a>
+                <a class="dropdown-item" href="#" (click)="onStatusClick('Currently read',$event)">Currently read</a>
               </li>
-              <li><a class="dropdown-item" href="#">Want to read</a></li>
-              <li><a class="dropdown-item" href="#">Read</a></li>
+              <li>
+                <a class="dropdown-item" href="#" (click)="onStatusClick('Want to read',$event)">Want to read</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#" (click)="onStatusClick('Read',$event)">Read</a>
+              </li>
             </ul>
           </div>
 

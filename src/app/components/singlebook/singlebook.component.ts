@@ -36,8 +36,6 @@ export class SinglebookComponent {
   bookDetails: any = {};
   ngOnInit() {
     const bookId = this.route.snapshot.params['id']
-    console.log(bookId);
-
     if (bookId) {
       this.bookService.getbookById(bookId).subscribe((response) => {
         this.bookDetails = response;
@@ -62,21 +60,6 @@ export class SinglebookComponent {
       emptyStarIcon.repeat(emptyStars)
     );
   }
-
-  // Rate Stars
-  stars = Array(5);
-  currentHoveredStar = 0;
-  starRate!: number;
-  onStarHover(starValue: number) {
-    this.currentHoveredStar = starValue;
-  }
-  onStarLeave() {
-    this.currentHoveredStar = 0;
-  }
-  onStarClick(starValue: number) {
-    return this.starRate = starValue;
-    console.log(`You clicked ${this.starRate} star(s)`);
-  }
   
   //Category Name Of Book 
   categoryName: string = '';
@@ -91,9 +74,33 @@ export class SinglebookComponent {
         this.categoryName = 'Category not found';
       }
     });
-    console.log(this.categoryName);
     return this.categoryName;
   }
+
+  // Status Dropdown
+  selectedStatus: string = 'Read';
+  onStatusClick(status: string, event: MouseEvent){
+    event.preventDefault();
+    return this.selectedStatus = status;
+    // Handle backend logic here if needed
+  }
+
+  // Rate Stars
+  stars = Array(5);
+  currentHoveredStar = 0;
+  starRate!: number;
+  onStarHover(starValue: number) {
+    this.currentHoveredStar = starValue;
+  }
+  onStarLeave() {
+    this.currentHoveredStar = 0;
+  }
+  onStarClick(starValue: number) {
+    return this.starRate = starValue;
+    console.log(`You clicked ${this.starRate} star(s)`);
+    // Handle backend logic here if needed
+  }
+  
   
   // if date of review is "2024-05-23T08:56:21.618Z"
   convertDate(dateString: string): string {
