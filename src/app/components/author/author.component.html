@@ -25,12 +25,12 @@
         </div>
 
         <div class="AuthorBooks p-5 text-dark mt-5">
-            <h4 style="color: #645b4a" class="fs-2">Author's Books:</h4>
+            <h1 style="color: #645b4a" class="fs-2">Author's Books:</h1>
         
             <div class="mt-4">
                 <!-- Iterate over authorbook -->
                 <div *ngFor="let item of authorbook" class="books d-flex flex-column"
-                     [ngClass]="{'d-none': item.author._id !== authorDetails._id}">
+                    [ngClass]="{'d-none': item.author._id !== authorDetails._id}">
                     <div class="booksInfo d-flex align-items-start">
                         <div class="w-25 h-50 m-3">
                             <img [src]="item.image" alt="book" class="w-100">
@@ -38,8 +38,8 @@
                         
                         <!-- Book Image -->
                         <div class="w-75 d-flex justify-content-start flex-column m-3">
-                            <h4 style="color: #565657">{{ item.title }}</h4>
-                            <p>{{ item.description }}</p>
+                            <h2 style="color: #565657">{{ item.title }}</h2>
+                            <p class="w-75" style="font-size: 16px;">{{ item.description }}</p>
                             <!-- Book Name -->
                             
                             <!-- StarsRating or any additional info can be added here -->

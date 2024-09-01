@@ -26,7 +26,6 @@ export class AuthorsComponent {
     authorsService.getauthors().subscribe((response: any) =>{
       this.authorsArray = response;
       this.isLoading = false;
-      
     })
     
   }
