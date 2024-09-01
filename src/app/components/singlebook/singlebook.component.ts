@@ -56,6 +56,13 @@ export class SinglebookComponent {
     );
   }
 
+  stars = Array(5);
+  starRate!: number;
+  onStarClick(starValue: number) {
+    return this.starRate = starValue;
+    console.log(`You clicked ${this.starRate} star(s)`);
+  }
+
   // if date of review is "2024-05-23T08:56:21.618Z"
   convertDate(dateString: string): string {
     const splittedDate = dateString.split("T")[0];

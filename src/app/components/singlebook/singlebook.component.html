@@ -16,13 +16,13 @@
         <img [src]="bookDetails.image" alt="Product Image" class="w-100" />
       </div>
 
-      <div class="col-12 col-md-8 mt-5 bookDetail">
-        <h3>{{ bookDetails.title }}</h3>
+      <div class="col-12 col-md-8 p-5 bookDetail">
+        <h1 style="color: #565657;">{{ bookDetails.title }}</h1>
         <!--Book Name-->
-        <h4>
+        <h3 style="color: #645b4a;">
           {{ bookDetails.author["firstName"] }}
           {{ bookDetails.author["lastName"] }}
-        </h4>
+        </h3>
         <!--by Book Author-->
         <h5>{{ bookDetails.Category }}</h5>
         <!--Category Author-->
@@ -60,12 +60,14 @@
             </ul>
           </div>
 
+          <!-- <i class="fa-solid fa-star"></i> -->
           <div class="stars mt-3 fs-5">
-            <i class="fa-regular fa-star"></i>
-            <i class="fa-regular fa-star"></i>
-            <i class="fa-regular fa-star"></i>
-            <i class="fa-regular fa-star"></i>
-            <i class="fa-regular fa-star"></i>
+            <i *ngFor="let star of stars; let i = index"
+              class="fa-regular fa-star fs-4"
+              [attr.data-value]="i + 1" 
+              (click)="onStarClick(i + 1)"
+            >
+            </i>
           </div>
         </div>
       </div>
