@@ -21,20 +21,30 @@ export class StartPageComponent {
   Charles:string="Charles"
 
   constructor(private router: Router, private booksService: GetbooksService,private authorsService: GetAuthorsService,private categoryService: GetcategoryService) {
-    booksService.getBooks().subscribe((response: any) => {
+    
+  }
+  ngOnInit() {
+    this.getstarted();
+    this.isLoading = false;
+
+  }
+  
+  getstarted(){
+    this.booksService.getBooks().subscribe((response: any) => {
       this.productsArray = response;
-      this.isLoading = false;
+      
     });
-    authorsService.getauthors().subscribe((response: any) =>{
+    this.authorsService.getauthors().subscribe((response: any) =>{
       this.authorsArray = response;
-      this.isLoading = false;
+      
       
     })
-    categoryService.getCategories().subscribe((response: any) =>{
+    this.categoryService.getCategories().subscribe((response: any) =>{
       this.categoriesArray = response;
-      this.isLoading = false;
+      
       
     })
+
   }
   singlebook(productId: number) {
     this.router.navigate(["/singleBook", productId]);

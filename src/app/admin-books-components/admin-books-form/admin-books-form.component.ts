@@ -54,7 +54,7 @@ export class AdminBooksFormComponent {
   }
   getauthor() {
     this.bookauthor.getAuthors().subscribe((response: any) => {
-      console.log("API Response:", response);
+      
       this.auth = response;
     });
   }
@@ -68,10 +68,20 @@ export class AdminBooksFormComponent {
         description: this.addForm.controls["description"].value,
         image:this.imageBase64 as string
       };
-      this.books.addbook(formData).subscribe((res) => {
-        console.log(res);
+      this.books.addbook(formData)
+      .subscribe({
+        next:(response) => {
+
+          this.GetBooks();
+          alert("Book Added")
+          
+        },
+        error:(error) => {
+          console.error('Error Adding Book:', error);
+          const errorMessage = error.error?.message || error.message || 'An unexpected error occurred';
+            alert(`Error: ${errorMessage}`);
+        }
       });
-      this.GetBooks();
     } else {
       this.notvalid = true;
     }
@@ -83,7 +93,7 @@ export class AdminBooksFormComponent {
       reader.onload = (e: any) => {
         this.imageBase64 = e.target.result;
       };
-      reader.readAsDataURL(file); // You can also use reader.readAsArrayBuffer(file) or other methods if needed
+      reader.readAsDataURL(file); 
     }
   }
 }

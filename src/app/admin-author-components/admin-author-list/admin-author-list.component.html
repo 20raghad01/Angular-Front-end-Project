@@ -7,7 +7,8 @@
   </div>
  
 </div>
-<app-admin-header></app-admin-header>
+<section *ngIf="!isLoading">
+  <app-admin-header></app-admin-header>
 <div class="container-fluid position-relative mt-5">
   <div class="d-flex justify-content-center">
     <div class="col-md-9 col-12">
@@ -56,3 +57,5 @@
     </div>
   </div>
 </div>
+
+</section>

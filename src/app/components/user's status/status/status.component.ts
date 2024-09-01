@@ -26,6 +26,11 @@ import { NgxPaginationModule } from 'ngx-pagination';
 export class StatusComponent {
     data!: Array<any> ;
     p: number = 1;
+    isLoading: boolean = true;
+    ngOnInit() {
+        this.isLoading = false;
+    
+      }
   // products: Array<any> = [];
 
   // constructor(private statusService: StatusService) {

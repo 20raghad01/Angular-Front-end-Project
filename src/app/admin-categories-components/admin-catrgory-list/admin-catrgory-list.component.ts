@@ -25,21 +25,38 @@ export class AdminCatrgoryListComponent {
     this.GetCategoriess();
   }
   GetCategoriess(){
-    this.categories.getCategories().subscribe((response:any)=>{
-      this.CategoriessList=response
-      this.isLoading = false;
-      
-    })
-  }
-  DeleteCategory(categoryid:number){
-    this.categories.deleteCategory(categoryid).subscribe(
-      (response) => {
-        console.log('Category deleted:', response);
-        
+    this.categories.getCategories().subscribe({
+      next:(response: any) => {
+        this.CategoriessList = response;
+        this.isLoading = false;
+      },
+      error:(error) => {
+        console.error('Error fetching categories:', error);
+        this.isLoading = false;
       }
+  });
       
-    );
-    this.GetCategoriess();
+    }
+  
+  DeleteCategory(categoryid:number){
+    const isConfirmed = window.confirm('Are you sure you want to delete this category?');
+  
+  if (isConfirmed) {
+    this.isLoading = true;
+    this.categories.deleteCategory(categoryid).subscribe({
+      next:(response) => {
+        console.log('Category deleted:', response);
+        this.GetCategoriess();
+        this.isLoading = false;
+      },
+      error:(error) => {
+        console.error('Error deleting category:', error);
+        const errorMessage = error.error?.message || error.message || 'An unexpected error occurred';
+          alert(`Error: ${errorMessage}`);
+          this.isLoading = false;
+      }
+    });
+  }
   }
   EditCategory(Bid:number){
     this.router.navigate(['/AdminCategoryEdit',Bid])

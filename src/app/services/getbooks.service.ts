@@ -10,13 +10,13 @@ export class GetbooksService {
 
   constructor(private http: HttpClient) {}
 
-  getBooks() {
+  getBooks(): Observable<any>  {
     return this.http.get(`${this.baseUrl}`);
   }
 
   getbookById(id: number): Observable<any> {
     console.log();
     
-    return this.http.get(`${this.baseUrl}/${id}`);
+    return this.http.get(`https://bookstore-api-raghads-projects-28484bdc.vercel.app/api/books/${id}`);
   }
 }
